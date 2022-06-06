@@ -1,0 +1,20 @@
+<table class="table tab-content table-sm table-hover">
+  <thead class="bg-warning">
+  <tr >
+    <th class="col-1">no</th>
+    <th class="col-2">name</th>
+    <th class="col-2">city</th>
+    <th class="col-2">state</th>
+    <th class="col-2">country</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let customer of customers">
+      <td class="col-1">{{customer.customerNo}}</td>
+      <td class="col-2">{{customer.name}}</td>
+      <td class="col-2">{{customer.city}}</td>
+      <td class="col-2">{{customer.state}}</td>
+      <td class="col-2">{{customer.country}}</td>
+  </tr>
+  </tbody>
+</table>

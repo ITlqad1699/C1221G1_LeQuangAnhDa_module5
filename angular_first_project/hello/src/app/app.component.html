@@ -1,0 +1,61 @@
+<app-list-student></app-list-student>
+<!--data binding interpolation -->
+<-------------------------------------------------------------------------------------------->
+<h2 [ngClass]="'red size20'">{{name}}</h2>
+<-------------------------------------------------------------------------------------------->
+<!--ngClass with array-->
+<div [ngClass]="['red','size20']">Red Text with Size 20px</div>
+<-------------------------------------------------------------------------------------------->
+<!--dynamic ngClass-->
+<div [ngClass]="cssStringVar">Red Text with Size 20px</div>
+<-------------------------------------------------------------------------------------------->
+<!--ngIF, ngFor, ngSwitchCase, ngClass-->
+<div class="row">
+  <div class="col-lg-6">
+    <app-customer></app-customer>
+  </div>
+  <div class="col-lg-6">
+    <app-employee></app-employee>
+  </div>
+</div>
+<app-style-ng-css></app-style-ng-css>
+<-------------------------------------------------------------------------------------------->
+sử dụng date:
+<h3>Date Pipe: {{dateValue | date}} </h3>
+<h3>Without Date Pipe: {{dateValue}} </h3>
+<h3>text value: {{textValue | uppercase}}</h3>
+<h3>text value: {{textValue | lowercase}}</h3>
+<h3>titlecase: {{textValue | titlecase}}</h3>
+<h3> slice: {{textValue | slice:0:4}}</h3>
+<-------------------------------------------------------------------------------------------->
+custom pipe
+<p>
+  F: <input type="text" [(ngModel)]="fValue">
+</p>
+<p>
+  C: {{fValue | temConverter: 'C'}}
+</p>
+<p>
+  C: <input type="text" [(ngModel)]="cValue">
+</p>
+<p>
+  F:{{cValue | temConverter: 'F'}}
+</p>
+<p><--------------------------------------------------------------------------------------------></p>
+truyền data từ cha sang con:
+<h1>Welcome to !</h1>
+<button (click)="increment()">Increment</button>
+<button (click)="decrement()">decrement</button>
+<app-child [count]=Counter></app-child>
+<p><--------------------------------------------------------------------------------------------></p>
+
+<!--<app-data-child-to-father (countChanged)="countChangedHandle($event)"></app-data-child-to-father>-->
+
+<button (click)="childToFatherComponent.increment()">increment</button>
+<button (click)="childToFatherComponent.decrement()">decrement</button>
+<app-data-child-to-father #childToFatherComponent></app-data-child-to-father>
+<!--<h1>parent result: {{countParent}}</h1>-->
+
+<h1>parent count: {{childToFatherComponent.count}}</h1>
+<p><--------------------------------------------------------------------------------------------></p>
+<app-an-component-life [countChild]="countFather"></app-an-component-life>

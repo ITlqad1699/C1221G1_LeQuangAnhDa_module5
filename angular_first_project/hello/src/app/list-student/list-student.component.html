@@ -1,0 +1,11 @@
+<h3>List students</h3>
+<!--binding Template Expression-->
+<p>tên sinh viên: {{student.id}} </p>
+<p>tuổi sinh viên: {{student.mark}} </p>
+<!--property binding-->
+<p>ảnh sinh viên: </p><img [src]="student.image" >
+<label>chấm điểm</label>
+<!--event binding bắt sự kiện-->
+<input type="number" (change)="getMark($event.target.value)">
+<!--binding dữ liệu 2 chiều từ html ==> ts và ngược lại-->
+<input type="number" [(ngModel)]="student.mark" >
