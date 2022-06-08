@@ -40,8 +40,37 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
           <ul class="nav navbar-nav menu_nav">
-            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" [routerLink]="['/']" >Home</a></li>
+            <li class="nav-item submenu dropdown">
+              <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
+                 data-toggle="dropdown"
+                 [routerLink]="['/customer-list']"
+                 role="button">Customer</a>
+              <ul class="dropdown-menu">
+                <li class="nav-item"><a class="nav-link" [routerLink]="['/customer-create']">Create</a></li>
+                <li class="nav-item"><a class="nav-link" [routerLink]="['/customer-edit']">Edit</a></li>
+              </ul>
+            </li>
+            <li class="nav-item submenu dropdown">
+              <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
+                 data-toggle="dropdown"
+                 [routerLink]="['/contract-list']"
+                 role="button">Contract</a>
+              <ul class="dropdown-menu">
+                <li class="nav-item"><a class="nav-link" [routerLink]="['/contract-create']">Create</a></li>
+<!--                <li class="nav-item"><a class="nav-link" [routerLink]="['/contract-edit']">Edit</a></li>-->
+              </ul>
+            </li>
+            <li class="nav-item submenu dropdown">
+              <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
+                 data-toggle="dropdown"
+                 [routerLink]="['/facility-list']"
+                 role="button">Facilities</a>
+              <ul class="dropdown-menu">
+                <li class="nav-item"><a class="nav-link" [routerLink]="['/facility-create']">Create</a></li>
+                <li class="nav-item"><a class="nav-link" [routerLink]="['/facility-edit']">Edit</a></li>
+              </ul>
+            </li>
             <li class="nav-item active"><a class="nav-link" href="facility.html">Properties</a></li>
             <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
             <li class="nav-item submenu dropdown">
