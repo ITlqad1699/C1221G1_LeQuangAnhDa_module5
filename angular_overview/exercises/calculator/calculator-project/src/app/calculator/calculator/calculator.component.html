@@ -1,0 +1,32 @@
+<div id="may_tinh">
+  <div id="ket_qua">
+    <div id="ket_qua_cu">
+      <p id="gia_tri_cu">{{numbers}}</p>
+    </div>
+    <div id="xuat_ket_qua">
+      <p id="gia_tri_xuat">{{results}}</p>
+    </div>
+  </div>
+  <div id="ban_phim">
+    <button class="he_thong" id="xoa_tat_ca" (click)="clear()" >C</button>
+    <button class="he_thong" id="xoa_tung_so" (click)="clearNum()">CE</button>
+    <button class="he_thong" id="%" (click)="getValue('%')">%</button>
+    <button class="he_thong" id="/" (click)="getValue('/')">÷</button>
+    <button class="con_so" id="7" (click)="getValue('7')">7</button>
+    <button class="con_so" id="8" (click)="getValue('8')" >8</button>
+    <button class="con_so" id="9" (click)="getValue('8')"  >9</button>
+    <button class="he_thong" id="*" (click)="getValue('*')">×</button>
+    <button class="con_so" id="4" (click)="getValue('4')">4</button>
+    <button class="con_so" id="5" (click)="getValue('5')">5</button>
+    <button class="con_so" id="6" (click)="getValue('6')">6</button>
+    <button class="he_thong" id="-" (click)="getValue('-')">-</button>
+    <button class="con_so" id="1" (click)="getValue('1')">1</button>
+    <button class="con_so" id="2" (click)="getValue('2')">2</button>
+    <button class="con_so" id="3" (click)="getValue('3')">3</button>
+    <button class="he_thong" id="+" (click)="getValue('+')">+</button>
+    <button class="trong" id="trong"></button>
+    <button class="con_so" id="0" (click)="getValue('0')">0</button>
+    <button class="trong" id="trong"></button>
+    <button class="he_thong" id="=" (click)="calculate()">=</button>
+  </div>
+</div>

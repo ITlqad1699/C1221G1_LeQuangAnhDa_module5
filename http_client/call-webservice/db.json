@@ -1,0 +1,20 @@
+{
+  "employee": [
+    {"id": 1,"name": "an",
+      "age": 12,
+      "salary": 300
+    },
+    {"id": 2,"name": "luật",
+      "age": 21,
+      "salary": 400
+    },
+    {"id": 3,"name": "vũ",
+      "age": 18,
+      "salary": 300
+    },
+    {"id": 4,"name": "nghĩa",
+      "age": 15,
+      "salary": 300
+    }
+  ]
+}
