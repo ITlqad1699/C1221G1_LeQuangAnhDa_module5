@@ -26,9 +26,9 @@ export class CustomerService {
 
       customerAddress: '23 Nguyễn Hoàng, Đà Nẵng',
 
-      customerType:     {
+      customerType: {
         customerTypeId: 5,
-        customerTypeName: "Member",
+        customerTypeName: 'Member',
         active: 1
       },
 
@@ -53,9 +53,9 @@ export class CustomerService {
 
       customerAddress: 'K77/22 Thái Phiên, Quảng Trị',
 
-      customerType:    {
+      customerType: {
         customerTypeId: 4,
-        customerTypeName: "Silver",
+        customerTypeName: 'Silver',
         active: 1
       },
 
@@ -80,9 +80,9 @@ export class CustomerService {
 
       customerAddress: 'K323/12 Ông Ích Khiêm, Vinh',
 
-      customerType:   {
+      customerType: {
         customerTypeId: 3,
-        customerTypeName: "Gold",
+        customerTypeName: 'Gold',
         active: 1
       },
 
@@ -107,9 +107,9 @@ export class CustomerService {
 
       customerAddress: 'K453/12 Lê Lợi, Đà Nẵng',
 
-      customerType:    {
+      customerType: {
         customerTypeId: 1,
-        customerTypeName: "Diamond",
+        customerTypeName: 'Diamond',
         active: 1
       },
 
@@ -134,9 +134,9 @@ export class CustomerService {
 
       customerAddress: '224 Lý Thái Tổ, Gia Lai',
 
-      customerType:    {
+      customerType: {
         customerTypeId: 1,
-        customerTypeName: "Diamond",
+        customerTypeName: 'Diamond',
         active: 1
       },
 
@@ -161,9 +161,9 @@ export class CustomerService {
 
       customerAddress: '23 Nguyễn Hoàng, Đà Nẵng',
 
-      customerType:   {
+      customerType: {
         customerTypeId: 5,
-        customerTypeName: "Member",
+        customerTypeName: 'Member',
         active: 1
       },
 
@@ -188,9 +188,9 @@ export class CustomerService {
 
       customerAddress: '23 Nguyễn Hoàng, Đà Nẵng',
 
-      customerType:   {
+      customerType: {
         customerTypeId: 4,
-        customerTypeName: "Silver",
+        customerTypeName: 'Silver',
         active: 1
       },
 
@@ -215,9 +215,9 @@ export class CustomerService {
 
       customerAddress: '23 Nguyễn Hoàng, Đà Nẵng',
 
-      customerType:    {
+      customerType: {
         customerTypeId: 3,
-        customerTypeName: "Gold",
+        customerTypeName: 'Gold',
         active: 1
       },
 
@@ -242,9 +242,9 @@ export class CustomerService {
 
       customerAddress: '23 Nguyễn Hoàng, Đà Nẵng',
 
-      customerType:    {
+      customerType: {
         customerTypeId: 2,
-        customerTypeName: "Platinium",
+        customerTypeName: 'Platinium',
         active: 1
       },
 
@@ -269,16 +269,26 @@ export class CustomerService {
 
       customerAddress: '23 Nguyễn Hoàng, Đà Nẵng',
 
-      customerType:   {
+      customerType: {
         customerTypeId: 1,
-        customerTypeName: "Diamond",
+        customerTypeName: 'Diamond',
         active: 1
       },
 
       active: 1
     }
   ];
-  public getCustomer(){
+
+  public getCustomer() {
     return this.customers;
+  }
+
+  public createCustomer(customer: Customer) {
+    console.log("abc");
+    console.log(customer);
+    customer.customerId = this.customers.length + 1;
+    customer.active = 1;
+    this.customers.push(customer);
+    console.log(this.customers)
   }
 }

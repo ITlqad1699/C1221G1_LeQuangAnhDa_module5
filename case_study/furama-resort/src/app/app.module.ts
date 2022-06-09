@@ -14,7 +14,8 @@ import { ContractCreateComponent } from './contract/contract-create/contract-cre
 import { FacilityListComponent } from './facilities/facility-list/facility-list.component';
 import { FacilityCreateComponent } from './facilities/facility-create/facility-create.component';
 import { FacilityEditComponent } from './facilities/facility-edit/facility-edit.component';
-
+import {NgxPaginationModule} from 'ngx-pagination';
+import {ReactiveFormsModule} from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,9 @@ import { FacilityEditComponent } from './facilities/facility-edit/facility-edit.
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxPaginationModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

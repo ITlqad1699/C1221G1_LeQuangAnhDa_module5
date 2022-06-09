@@ -11,6 +11,7 @@ declare let deleteCustomer: any;
   styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
+  p: number = 1;
   customers: Customer[];
   customerRoot: Customer;
   totalPages = 0;
@@ -27,6 +28,7 @@ export class CustomerListComponent implements OnInit {
 
   getAllCustomer(){
     this.customers = this.customerService.getCustomer();
+    console.log(this.customers);
   }
 }
 

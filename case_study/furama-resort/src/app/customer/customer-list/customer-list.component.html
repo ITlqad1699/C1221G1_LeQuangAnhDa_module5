@@ -16,7 +16,7 @@
   <div class="container">
     <div class="section-intro text-center pb-20px">
       <div class="section-intro__style">
-        <img alt="" src="img/home/user.png">
+        <img alt="" src="../../../assets/img/home/user.png">
       </div>
       <h2>We Served</h2>
     </div>
@@ -63,12 +63,12 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let customer of customers; index as i">
-        <td>{{i+1}}</td>
+      <tr *ngFor="let customer of customers|paginate : { itemsPerPage: 5, currentPage: p }; index as i">
+        <td>{{i + 1}}</td>
         <td>{{customer.customerCode}}</td>
         <td>{{customer.customerName}}</td>
-        <td *ngIf="customer.customerGender===1">Nam</td>
-        <td *ngIf="customer.customerGender===0">Nữ</td>
+        <td *ngIf="customer.customerGender==1">Nam</td>
+        <td *ngIf="customer.customerGender==0">Nữ</td>
         <td>{{customer.customerPhone}}</td>
         <td>{{customer.customerEmail}}</td>
         <td>{{customer.customerIdCard}}</td>
@@ -83,12 +83,12 @@
             </button>
             <ul class="navbar-nav mx-auto">
               <li class="nav-item">
-                <button class="btn btn-success w-100">
+                <button class="btn btn-success w-100" >
                   <i class='ti-user'></i>
                 </button>
               </li>
               <li class="nav-item">
-                <button class="btn btn-warning w-100">
+                <button class="btn btn-warning w-100" [routerLink]="['/customer-edit']">
                   <i class='ti-settings'></i>
                 </button>
               </li>
@@ -105,32 +105,35 @@
       </tr>
       </tbody>
     </table>
-
+    <hr/>
+    <div style="justify-content: space-around;display: flex;">
+      <pagination-controls (pageChange)="p = $event" class=" page-item"></pagination-controls>
+    </div>
   </div>
   <!--        paging-->
-  <nav class="blog-pagination d-flex justify-content-center py-3">
-    <ul class="pagination">
-      <!--            <li class="page-item active px-1">-->
-      <!--                <a th:href="@{/employees(page=${employees.number - 1},-->
-      <!--                                    name=${nameVal},-->
-      <!--                                    phone=${phoneVal},-->
-      <!--                                    department=${departmentVal})}" class="page-link">Previous</a>-->
-      <!--            </li>-->
-      <li class="page-item px-1">
-        <a href="#" class="page-link">Previous</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link">
-          <span>1</span>
-          <span>/</span>
-          <span>5</span>
-        </a>
-      </li>
-      <li class="page-item px-1">
-        <a href="#" class="page-link">Next</a>
-      </li>
-    </ul>
-  </nav>
+<!--  <nav class="blog-pagination d-flex justify-content-center py-3">-->
+<!--    <ul class="pagination">-->
+<!--      &lt;!&ndash;            <li class="page-item active px-1">&ndash;&gt;-->
+<!--      &lt;!&ndash;                <a th:href="@{/employees(page=${employees.number - 1},&ndash;&gt;-->
+<!--      &lt;!&ndash;                                    name=${nameVal},&ndash;&gt;-->
+<!--      &lt;!&ndash;                                    phone=${phoneVal},&ndash;&gt;-->
+<!--      &lt;!&ndash;                                    department=${departmentVal})}" class="page-link">Previous</a>&ndash;&gt;-->
+<!--      &lt;!&ndash;            </li>&ndash;&gt;-->
+<!--      <li class="page-item px-1">-->
+<!--        <a href="#" class="page-link">Previous</a>-->
+<!--      </li>-->
+<!--      <li class="page-item">-->
+<!--        <a class="page-link">-->
+<!--          <span>1</span>-->
+<!--          <span>/</span>-->
+<!--          <span>5</span>-->
+<!--        </a>-->
+<!--      </li>-->
+<!--      <li class="page-item px-1">-->
+<!--        <a href="#" class="page-link">Next</a>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--  </nav>-->
   <!--        paging-->
 </section>
 <!-- ================ Explore section end ================= -->
