@@ -63,16 +63,17 @@
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td>1</td>
-        <td>KH-001</td>
-        <td>Lê Quang Anh Đà</td>
-        <td> Nam</td>
-        <td>0901235646</td>
-        <td>anhda@gmail.com</td>
-        <td>212321242</td>
-        <td>Diamond</td>
-        <td>Da Nang</td>
+      <tr *ngFor="let customer of customers; index as i">
+        <td>{{i+1}}</td>
+        <td>{{customer.customerCode}}</td>
+        <td>{{customer.customerName}}</td>
+        <td *ngIf="customer.customerGender===1">Nam</td>
+        <td *ngIf="customer.customerGender===0">Nữ</td>
+        <td>{{customer.customerPhone}}</td>
+        <td>{{customer.customerEmail}}</td>
+        <td>{{customer.customerIdCard}}</td>
+        <td>{{customer.customerType.customerTypeName}}</td>
+        <td>{{customer.customerAddress}}</td>
         <td>
           <div class="dropout d-flex align-items-center">
             <button class="more">

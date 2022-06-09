@@ -26,7 +26,11 @@ export class CustomerService {
 
       customerAddress: '23 Nguyễn Hoàng, Đà Nẵng',
 
-      customerTypeId: 5,
+      customerType:     {
+        customerTypeId: 5,
+        customerTypeName: "Member",
+        active: 1
+      },
 
       active: 1
     },
@@ -49,7 +53,11 @@ export class CustomerService {
 
       customerAddress: 'K77/22 Thái Phiên, Quảng Trị',
 
-      customerTypeId: 4,
+      customerType:    {
+        customerTypeId: 4,
+        customerTypeName: "Silver",
+        active: 1
+      },
 
       active: 1
     },
@@ -72,7 +80,11 @@ export class CustomerService {
 
       customerAddress: 'K323/12 Ông Ích Khiêm, Vinh',
 
-      customerTypeId: 3,
+      customerType:   {
+        customerTypeId: 3,
+        customerTypeName: "Gold",
+        active: 1
+      },
 
       active: 1
     },
@@ -95,7 +107,11 @@ export class CustomerService {
 
       customerAddress: 'K453/12 Lê Lợi, Đà Nẵng',
 
-      customerTypeId: 2,
+      customerType:    {
+        customerTypeId: 1,
+        customerTypeName: "Diamond",
+        active: 1
+      },
 
       active: 1
     },
@@ -118,7 +134,11 @@ export class CustomerService {
 
       customerAddress: '224 Lý Thái Tổ, Gia Lai',
 
-      customerTypeId: 1,
+      customerType:    {
+        customerTypeId: 1,
+        customerTypeName: "Diamond",
+        active: 1
+      },
 
       active: 1
     },
@@ -141,7 +161,11 @@ export class CustomerService {
 
       customerAddress: '23 Nguyễn Hoàng, Đà Nẵng',
 
-      customerTypeId: 5,
+      customerType:   {
+        customerTypeId: 5,
+        customerTypeName: "Member",
+        active: 1
+      },
 
       active: 1
     },
@@ -164,7 +188,11 @@ export class CustomerService {
 
       customerAddress: '23 Nguyễn Hoàng, Đà Nẵng',
 
-      customerTypeId: 4,
+      customerType:   {
+        customerTypeId: 4,
+        customerTypeName: "Silver",
+        active: 1
+      },
 
       active: 1
     },
@@ -187,7 +215,11 @@ export class CustomerService {
 
       customerAddress: '23 Nguyễn Hoàng, Đà Nẵng',
 
-      customerTypeId: 3,
+      customerType:    {
+        customerTypeId: 3,
+        customerTypeName: "Gold",
+        active: 1
+      },
 
       active: 1
     },
@@ -210,7 +242,11 @@ export class CustomerService {
 
       customerAddress: '23 Nguyễn Hoàng, Đà Nẵng',
 
-      customerTypeId: 2,
+      customerType:    {
+        customerTypeId: 2,
+        customerTypeName: "Platinium",
+        active: 1
+      },
 
       active: 1
     },
@@ -233,9 +269,16 @@ export class CustomerService {
 
       customerAddress: '23 Nguyễn Hoàng, Đà Nẵng',
 
-      customerTypeId: 1,
+      customerType:   {
+        customerTypeId: 1,
+        customerTypeName: "Diamond",
+        active: 1
+      },
 
       active: 1
     }
   ];
+  public getCustomer(){
+    return this.customers;
+  }
 }
