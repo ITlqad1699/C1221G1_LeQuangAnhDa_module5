@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Customer} from '../../models/Customer';
+import {Customer} from '../../models/customer';
 import {Router} from '@angular/router';
-import {CustomerService} from '../../services/CustomerService';
+import {CustomerService} from '../../services/customerService';
 declare let createThreeDots: any;
 declare let deleteCustomer: any;
 

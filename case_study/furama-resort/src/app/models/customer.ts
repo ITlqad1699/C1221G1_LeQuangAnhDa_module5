@@ -1,4 +1,4 @@
-import {CustomerType} from './CustomerType';
+import {CustomerType} from './customerType';
 
 export class Customer {
   customerId: number;

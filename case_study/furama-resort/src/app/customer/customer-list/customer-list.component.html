@@ -88,7 +88,7 @@
                 </button>
               </li>
               <li class="nav-item">
-                <button class="btn btn-warning w-100" [routerLink]="['/customer-edit']">
+                <button class="btn btn-warning w-100" routerLink="/customer-edit/{{customer.customerId}}">
                   <i class='ti-settings'></i>
                 </button>
               </li>
@@ -110,31 +110,6 @@
       <pagination-controls (pageChange)="p = $event" class=" page-item"></pagination-controls>
     </div>
   </div>
-  <!--        paging-->
-<!--  <nav class="blog-pagination d-flex justify-content-center py-3">-->
-<!--    <ul class="pagination">-->
-<!--      &lt;!&ndash;            <li class="page-item active px-1">&ndash;&gt;-->
-<!--      &lt;!&ndash;                <a th:href="@{/employees(page=${employees.number - 1},&ndash;&gt;-->
-<!--      &lt;!&ndash;                                    name=${nameVal},&ndash;&gt;-->
-<!--      &lt;!&ndash;                                    phone=${phoneVal},&ndash;&gt;-->
-<!--      &lt;!&ndash;                                    department=${departmentVal})}" class="page-link">Previous</a>&ndash;&gt;-->
-<!--      &lt;!&ndash;            </li>&ndash;&gt;-->
-<!--      <li class="page-item px-1">-->
-<!--        <a href="#" class="page-link">Previous</a>-->
-<!--      </li>-->
-<!--      <li class="page-item">-->
-<!--        <a class="page-link">-->
-<!--          <span>1</span>-->
-<!--          <span>/</span>-->
-<!--          <span>5</span>-->
-<!--        </a>-->
-<!--      </li>-->
-<!--      <li class="page-item px-1">-->
-<!--        <a href="#" class="page-link">Next</a>-->
-<!--      </li>-->
-<!--    </ul>-->
-<!--  </nav>-->
-  <!--        paging-->
 </section>
 <!-- ================ Explore section end ================= -->
 <!-- Modal -->

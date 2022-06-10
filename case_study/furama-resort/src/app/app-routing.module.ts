@@ -14,13 +14,13 @@ import {FacilityEditComponent} from './facilities/facility-edit/facility-edit.co
 const routes: Routes = [
   {path: '', component: HomePageComponent},
   {path: 'customer-list', component: CustomerListComponent},
-  {path: 'customer-edit', component: CustomerEditComponent},
+  {path: 'customer-edit/:id', component: CustomerEditComponent},
   {path: 'customer-create', component: CustomerCreateComponent},
   {path: 'contract-list', component: ContractListComponent},
   {path: 'contract-create', component: ContractCreateComponent},
   {path: 'facility-list', component: FacilityListComponent},
   {path: 'facility-create', component: FacilityCreateComponent},
-  {path: 'facility-edit', component: FacilityEditComponent}
+  {path: 'facility-edit/:id', component: FacilityEditComponent}
 ];
 
 @NgModule({

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {Customer} from '../models/Customer';
-import {CustomerType} from '../models/CustomerType';
+import {Customer} from '../models/customer';
+import {CustomerType} from '../models/customerType';
 
 @Injectable({
   providedIn: 'root'
@@ -283,12 +283,30 @@ export class CustomerService {
     return this.customers;
   }
 
+  public findById(id: number) {
+    return this.customers.find(customer => customer.customerId==id);
+  }
+
   public createCustomer(customer: Customer) {
-    console.log("abc");
+    console.log('abc');
     console.log(customer);
     customer.customerId = this.customers.length + 1;
     customer.active = 1;
     this.customers.push(customer);
-    console.log(this.customers)
+    console.log(this.customers);
+  }
+
+  public updateCustomer(id: number, customer: Customer) {
+    for (let i = 0; i < this.customers.length; i++) {
+      if (this.customers[i].customerId == id) {
+        this.customers[i] = customer;
+      }
+    }
+  }
+
+  public deleteCustomer(id: number) {
+    this.customers = this.customers.filter(customer => {
+      return customer.customerId != id;
+    });
   }
 }
