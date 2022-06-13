@@ -1,4 +1,4 @@
-import {RentType} from './RentType';
+import {RentType} from './rentType';
 import {FacilityType} from './facilityType';
 
 export class Facility {

@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {Customer} from '../../models/customer';
-import {CustomerType} from '../../models/customerType';
+import {Customer} from '../models/customer';
+import {CustomerType} from '../models/customerType';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router, ActivatedRoute, ParamMap} from '@angular/router';
-import {CustomerService} from '../../services/customer-service';
-import {CustomerTypeService} from '../../services/customer-type-service';
+import {CustomerService} from '../service/customer-service';
+import {CustomerTypeService} from '../service/customer-type-service';
 
 @Component({
   selector: 'app-customer-edit',

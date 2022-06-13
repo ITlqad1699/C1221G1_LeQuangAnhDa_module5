@@ -1,5 +1,5 @@
-import { Customer } from './customer';
-import { Facility } from './Facility';
+import { Customer } from '../../customer/models/customer';
+import { Facility } from '../../facilities/models/facility';
 
 export class Contract {
   contractId:number;

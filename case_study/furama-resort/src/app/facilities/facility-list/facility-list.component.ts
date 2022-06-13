@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {FacilityService} from '../../services/facility-service';
+import {FacilityService} from '../services/facility-service';
 import {Router} from '@angular/router';
-import {Facility} from '../../models/facility';
+import {Facility} from '../models/facility';
 
 declare let createThreeDots: any;
 

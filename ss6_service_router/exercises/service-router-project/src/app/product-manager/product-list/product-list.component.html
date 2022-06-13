@@ -1,0 +1,54 @@
+<div class="container col-8">
+  <table class="table  table-striped  align-middle mb-0 bg-white">
+    <thead class="bg-light">
+    <tr class="row">
+      <td class="col">STT</td>
+      <td class="col">Tên</td>
+      <td class="col">Giá</td>
+      <td class="col">Mô tả</td>
+      <td class="col"></td>
+    </tr>
+    </thead>
+    <tbody class="bg-light">
+    <tr *ngFor="let product of products; index as i" class="row">
+      <td class="col">{{i + 1}}</td>
+      <td class="col">{{product.name}}</td>
+      <td class="col">{{product.price}}</td>
+      <td class="col">{{product.description}}</td>
+      <td class="col">
+        <a [routerLink]="['/product-update',product.id]">
+          <button class="btn btn-warning w-50">
+            Edit
+          </button>
+        </a>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-danger w-50" data-mdb-toggle="modal" data-mdb-target="#exampleModal"
+                (click)="sendNameProduct(product.id, product.name)">
+          Delete
+        </button>
+      </td>
+    </tr>
+    </tbody>
+
+  </table>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Do you really want to delete product:
+          <span class="text-danger font-weight-bold" id="nameDelete">{{nameDelete}}</span>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button #closeModal type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" (click)="deleteProduct(closeModal)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

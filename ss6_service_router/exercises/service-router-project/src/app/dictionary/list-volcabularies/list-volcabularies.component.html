@@ -1,0 +1,27 @@
+<div class="container col-8">
+  <table class="table  table-striped  align-middle mb-0 bg-white">
+    <thead class="bg-light">
+    <tr class="row">
+      <td class="col">no</td>
+      <td class="col">english</td>
+      <td class="col">vietnamese</td>
+      <td class="col"></td>
+    </tr>
+    </thead>
+    <tbody class="bg-light">
+    <tr *ngFor="let vocabulary of volcabularies; index as i" class="row">
+      <td class="col">{{i + 1}}</td>
+      <td class="col">{{vocabulary.english}}</td>
+      <td class="col">{{vocabulary.vietnamese}}</td>
+      <td class="col">
+        <a [routerLink]="['/dictionary']">
+          <button class="btn btn-warning w-50">
+            translate
+          </button>
+        </a>
+    </tr>
+    </tbody>
+
+  </table>
+</div>
+<!-- Modal -->

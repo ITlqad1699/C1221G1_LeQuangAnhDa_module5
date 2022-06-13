@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import { RentType } from '../models/RentType';
+import { RentType } from '../models/rentType';
 
 @Injectable({
   providedIn: 'root'

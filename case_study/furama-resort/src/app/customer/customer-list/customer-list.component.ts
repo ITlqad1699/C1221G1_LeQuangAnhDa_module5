@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Customer} from '../../models/customer';
+import {Customer} from '../models/customer';
 import {Router} from '@angular/router';
-import {CustomerService} from '../../services/customer-service';
+import {CustomerService} from '../service/customer-service';
 declare let createThreeDots: any;
 
 @Component({

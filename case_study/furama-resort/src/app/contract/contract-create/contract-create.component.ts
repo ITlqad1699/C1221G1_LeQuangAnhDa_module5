@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
-import {Customer} from 'src/app/models/customer';
-import {Facility} from 'src/app/models/Facility';
+import {Customer} from 'src/app/customer/models/customer';
+import {Facility} from 'src/app/facilities/models/facility';
 import {ActivatedRoute, Router} from '@angular/router';
-import {CustomerService} from 'src/app/services/customer-service';
-import {FacilityService} from 'src/app/services/facility-service';
-import {ContractService} from 'src/app/services/contract-service';
+import {CustomerService} from 'src/app/customer/service/customer-service';
+import {FacilityService} from 'src/app/facilities/services/facility-service';
+import {ContractService} from 'src/app/contract/service/contract-service';
 
 @Component({
   selector: 'app-contract-create',

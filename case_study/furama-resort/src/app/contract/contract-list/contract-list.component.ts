@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ContractService} from '../../services/contract-service';
+import {ContractService} from '../service/contract-service';
 import {Router} from '@angular/router';
-import {Contract} from '../../models/contract';
+import {Contract} from '../models/contract';
 declare let createThreeDots: any;
 @Component({
   selector: 'app-contract-list',
