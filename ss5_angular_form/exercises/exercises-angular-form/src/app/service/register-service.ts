@@ -9,8 +9,8 @@ export class RegisterService {
     {
       id: 1,
       email: 'lqad@gmail.com',
-      password: '123',
-      confirmPassword: '123',
+      password: '123123',
+      confirmPassword: '123123',
       age: 22,
       country: 'Việt Nam',
       gender: 1,
@@ -19,8 +19,8 @@ export class RegisterService {
     {
       id: 2,
       email: 'lqad1699@gmail.com',
-      password: '123',
-      confirmPassword: '123',
+      password: '123123',
+      confirmPassword: '123123',
       age: 22,
       country: 'Việt Nam',
       gender: 1,
