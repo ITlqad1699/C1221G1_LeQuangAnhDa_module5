@@ -1,5 +1,5 @@
 export class FacilityType {
-  serviceTypeId: number;
-  serviceTypeName: string;
+  facilityTypeId: number;
+  facilityTypeName: string;
   active: number;
 }

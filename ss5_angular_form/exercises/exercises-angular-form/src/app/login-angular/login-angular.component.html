@@ -1,0 +1,43 @@
+<div class="container col-8">
+  <form [formGroup]="formLogin" (ngSubmit)="onsubmit()">
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+      <input type="email" id="form1Example1" class="form-control" formControlName="email"/>
+      <label class="form-label" for="form1Example1">Email address</label>
+      <div
+        *ngIf="email.invalid && (email.dirty || email.touched) || email.errors?.empty">
+        <span *ngIf="email.errors.email" style="color: red">Wrong format, ex: abc@gmail.com</span>
+        <span *ngIf="email.errors.required || email.errors.empty" style="color: red">Empty! Input please!</span>
+      </div>
+    </div>
+
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+      <input type="password" id="form1Example2" class="form-control" formControlName="password"/>
+      <label class="form-label" for="form1Example2">Password</label>
+      <div
+        *ngIf="password.invalid && (password.dirty || password.touched) || password.errors?.empty  || password.errors?.validpass">
+        <span *ngIf="password.errors.required || password.errors.empty" style="color: red">Empty! Input please!</span>
+        <span *ngIf="password.errors.minlength" style="color: red">min length: 6 characters</span>
+      </div>
+    </div>
+
+    <!-- 2 column grid layout for inline styling -->
+    <div class="row mb-4">
+      <div class="col d-flex justify-content-center">
+        <!-- Checkbox -->
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
+          <label class="form-check-label" for="form1Example3"> Remember me </label>
+        </div>
+      </div>
+
+      <div class="col">
+        <!-- Simple link -->
+        <a href="#!">Forgot password?</a>
+      </div>
+    </div>
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary btn-block" [disabled]="!formLogin.valid">Sign in</button>
+  </form>
+</div>

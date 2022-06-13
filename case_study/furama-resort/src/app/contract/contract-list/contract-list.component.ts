@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ContractService} from '../../services/contractService';
+import {ContractService} from '../../services/contract-service';
 import {Router} from '@angular/router';
 import {Contract} from '../../models/contract';
 declare let createThreeDots: any;
-declare let deleteCustomer: any;
 @Component({
   selector: 'app-contract-list',
   templateUrl: './contract-list.component.html',
@@ -18,8 +17,6 @@ export class ContractListComponent implements OnInit {
     this.getContracts();
     // tslint:disable-next-line:no-unused-expression
     new createThreeDots();
-    // tslint:disable-next-line:no-unused-expression
-    new deleteCustomer();
   }
 
   public getContracts(){

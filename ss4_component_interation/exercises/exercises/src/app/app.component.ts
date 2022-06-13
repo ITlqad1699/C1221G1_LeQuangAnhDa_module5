@@ -8,8 +8,13 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'exercises';
   rating: string;
+  coundownTime: number;
 
   updateRating(event: string) {
       this.rating = event;
+  }
+
+  coundownTimer(event: any) {
+      this.coundownTime = event;
   }
 }

@@ -18,7 +18,7 @@
       <div class="section-intro__style">
         <img alt="" src="../../../assets/img/home/user.png">
       </div>
-      <h2>We Served</h2>
+      <h2>Welcome!</h2>
     </div>
     <p class="mt-3">Searching customer </p>
     <div class="form-inline my-lg-3">
@@ -95,7 +95,7 @@
               <li class="nav-item">
                 <button class="btn btn-danger w-100" data-target="#deleteModal"
                         data-toggle="modal"
-                        onclick="deleteCustomer(1,'1')">
+                       (click)="sendNameProduct(customer.customerId, customer.customerName)">
                   <i class='bx bx-trash'></i>
                 </button>
               </li>
@@ -124,14 +124,13 @@
       </div>
       <div class="modal-body">
         <p>Do you really want to delete customer
-          <span class="text-danger font-weight-bold" id="nameDelete"></span>
+          <span class="text-danger font-weight-bold" id="nameDelete">{{nameDelete}}</span>
         </p>
       </div>
       <div class="modal-footer">
         <div class="mx-auto row">
-          <input type="hidden" name="id" id="idDelete">
-          <button type="button" class="btn btn-secondary mx-1" data-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-danger mx-1 ">Delete</button>
+          <button #closeModal type="button" class="btn btn-secondary mx-1" data-dismiss="modal" >Cancel</button>
+          <button type="submit" class="btn btn-danger mx-1" id="id_delete" (click)="deleteCustomer(closeModal)">Delete</button>
         </div>
       </div>
     </div>

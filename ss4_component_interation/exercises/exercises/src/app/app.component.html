@@ -2,4 +2,5 @@
 <h1>{{rating}}</h1>
 <p><-------------------------------------------------------------------------------></p>
 
-<app-countdown-timer></app-countdown-timer>
+<app-countdown-timer (countdownChange)="coundownTimer($event)"></app-countdown-timer>
+<h1>{{coundownTime}}</h1>

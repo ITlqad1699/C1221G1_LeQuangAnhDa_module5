@@ -28,7 +28,7 @@ export class Facility {
 
   rentType: RentType;
 
-  serviceType: FacilityType;
+  facilityType: FacilityType;
 
   active: number;
 

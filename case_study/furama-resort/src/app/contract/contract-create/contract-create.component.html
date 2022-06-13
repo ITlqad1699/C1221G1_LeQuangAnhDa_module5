@@ -21,76 +21,87 @@
   <div class="container">
     <div class="section-intro text-center pb-80px">
       <div class="section-intro__style">
-        <img alt="" src="img/home/contract.png">
+        <img alt="" src="../../../assets/img/home/contract.png">
       </div>
       <h2>Create New Contract</h2>
     </div>
-    <div class="col-8 mx-auto">
-      <div class="mx-auto shadow-lg p-3 mb-5 bg-white rounded-lg">
-        <div class="form-group row">
-          <label for="startDate" class="col-sm-3 col-form-label">Start Date</label>
-          <div class="col-sm-9">
-            <input type="date" class="form-control" id="startDate">
+    <form [formGroup] = "contractForm" method="POST" >
+      <div class="col-8 mx-auto">
+        <input type="hidden" class="form-control" id="money" formControlName="contractTotalMoney">
+        <div class="mx-auto shadow-lg p-3 mb-5 bg-white rounded-lg">
+          <div class="form-group row">
+            <label for="startDate" class="col-sm-3 col-form-label">Start Date</label>
+            <div class="col-sm-9">
+              <input type="date" class="form-control" id="startDate" formControlName="contractStartDate">
+              <div
+                *ngIf="contractStartDate.invalid && (contractStartDate.dirty || contractStartDate.touched) || contractStartDate.errors?.empty || contractStartDate.errors?.dateErrors">
+                <span *ngIf="contractStartDate.errors.required || contractStartDate.errors.empty" style="color: red">Empty! Choose please!</span>
+                <span *ngIf="contractStartDate.errors.dateErrors" style="color: red">End date must be after start date! Please choose again!</span>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="form-group row">
-          <label for="endDate" class="col-sm-3 col-form-label">End Date</label>
-          <div class="col-sm-9">
-            <input type="date" class="form-control" id="endDate">
+          <div class="form-group row">
+            <label for="endDate" class="col-sm-3 col-form-label">End Date</label>
+            <div class="col-sm-9">
+              <input type="date" class="form-control" id="endDate" formControlName="contractEndDate">
+              <div
+                *ngIf="contractEndDate.invalid && (contractEndDate.dirty || contractEndDate.touched) || contractEndDate.errors?.empty || contractEndDate.errors?.dateErrors">
+                <span *ngIf="contractEndDate.errors.required || contractEndDate.errors.empty" style="color: red">Empty! Choose please!</span>
+                <span *ngIf="contractEndDate.errors.dateErrors" style="color: red">End date must be after start date! Please choose again!</span>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="form-group row">
-          <label for="deposit" class="col-sm-3 col-form-label">Deposit</label>
-          <div class="col-sm-9">
-            <input type="number" class="form-control" id="deposit" step="any">
+          <div class="form-group row">
+            <label for="deposit" class="col-sm-3 col-form-label">Deposit</label>
+            <div class="col-sm-9">
+              <input type="number" class="form-control" id="deposit" step="any" formControlName="contractDeposit">
+              <div
+                *ngIf="contractDeposit.invalid && (contractDeposit.dirty || contractDeposit.touched) || contractDeposit.errors?.empty || contractDeposit.errors?.active">
+                <span *ngIf="contractDeposit.errors.required || contractDeposit.errors.empty" style="color: red">Empty! Input please!</span>
+                <span *ngIf="contractDeposit.errors.active" style="color: red">must be positive !</span>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="form-group row">
-          <label for="employee" class="col-sm-3 col-form-label">Employee Create</label>
-          <div class="col-sm-9">
-            <select class="form-control"
-                    id="employee"
-                    name="employee">
-              <option value="null">Select Employee</option>
-              <option value="1">Pham Viet Khoa</option>
-              <option value="2">Khoa Pham</option>
-            </select>
+          <div class="form-group row">
+            <label for="customer" class="col-sm-3 col-form-label">Customer booking</label>
+            <div class="col-sm-9">
+              <select class="form-control"
+                      id="customer"
+                      name="customer" formControlName="customer">
+                <option [ngValue]="c" *ngFor="let c of customers;let first" [selected]="first">{{c.customerName}}</option>
+              </select>
+              <div
+                *ngIf="customer.invalid && (customer.dirty || customer.touched) || customer.errors?.empty">
+                <span *ngIf="customer.errors.required || customer.errors.empty" style="color: red">Empty! Input please!</span>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="form-group row">
-          <label for="customer" class="col-sm-3 col-form-label">Customer booking</label>
-          <div class="col-sm-9">
-            <select class="form-control"
-                    id="customer"
-                    name="customer">
-              <option value="null">Select Customer</option>
-              <option value="1">Pham Viet Khoa</option>
-              <option value="2">Khoa Pham</option>
-            </select>
+          <div class="form-group row">
+            <label for="facility" class="col-sm-3 col-form-label">Service</label>
+            <div class="col-sm-9">
+              <select class="form-control"
+                      id="facility"
+                      name="facility" formControlName="services">
+                <option [ngValue]="f" *ngFor="let f of facilities; let first"  [selected]="first">{{f.serviceName}}</option>
+              </select>
+              <div
+                *ngIf="services.invalid && (services.dirty || services.touched) || services.errors?.empty">
+                <span *ngIf="services.errors.required || services.errors.empty" style="color: red">Empty! Input please!</span>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="form-group row">
-          <label for="facility" class="col-sm-3 col-form-label">Service</label>
-          <div class="col-sm-9">
-            <select class="form-control"
-                    id="facility"
-                    name="facility">
-              <option value="null">Select Service</option>
-              <option value="1">Villa River Side</option>
-              <option value="2">Room Street view</option>
-            </select>
-          </div>
-        </div>
-        <div class="d-flex justify-content-center">
-          <div class="mx-2">
-            <a href="#" class="button button--cancel cancel-banner-btn">Cancel</a>
-          </div>
-          <div class="mx-2">
-            <a href="#" class="button button--active home-banner-btn">Create</a>
+          <div class="d-flex justify-content-center">
+            <div class="mx-2">
+              <a href="#" class="button button--cancel cancel-banner-btn">Cancel</a>
+            </div>
+            <div class="mx-2">
+              <a class="button button--active home-banner-btn" (click)="onsubmit()">Create</a>
+            </div>
+<!--            <button type="submit">submit</button>-->
           </div>
         </div>
       </div>
-    </div>
+    </form>
 
   </div>
 

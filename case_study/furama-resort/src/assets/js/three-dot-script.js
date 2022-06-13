@@ -9,7 +9,4 @@ function createThreeDots() {
     target.parentElement.classList.toggle('active');
   };
 }
-function deleteCustomer(id, name) {
-  document.getElementById("idDelete").value = id;
-  document.getElementById("nameDelete").innerText = " " + name + "?";
-}
+
