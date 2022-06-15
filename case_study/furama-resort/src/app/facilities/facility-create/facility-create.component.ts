@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Facility} from '../models/facility';
 import {FacilityType} from '../models/facilityType';
 import {RentType} from '../models/rentType';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {RentTypeService} from '../services/rent-type.service';
 import {FacilityService} from '../services/facility.service';
@@ -31,9 +31,10 @@ export class FacilityCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.facilityForm = this.fb.group({
+      id: [''],
       serviceCode: ['', [Validators.required, Validators.pattern('^$|^DV-[\\d]{4}$')]],
       serviceName: ['', Validators.required],
-      // serviceImage: [''],
+      serviceImage: ['../../assets/img/home/explore6.png'],
       serviceArea: ['', [Validators.required]],
       serviceCost: ['', [Validators.required]],
       serviceMaxPeople: ['', [Validators.required]],
@@ -43,10 +44,19 @@ export class FacilityCreateComponent implements OnInit {
       numberOfFloors: ['', [Validators.required]],
       freeAttachedService: ['', [Validators.required]],
       rentType: ['', [Validators.required]],
-      facilityType: ['', [Validators.required]]
+      facilityType: ['', [Validators.required]],
+      active: [1]
     });
-    this.rentTypes = this.rentTypeService.getRentTypes();
-    this.facilityTypes = this.facilityTypeService.getFacilityType();
+    this.rentTypeService.getAllRentTypeAPI().subscribe(rentTypes => {
+      this.rentTypes = rentTypes;
+    }, error => {
+      console.log(error);
+    });
+    this.facilityTypeService.getAllFacilityTypeAPI().subscribe(facilityTypes => {
+      this.facilityTypes = facilityTypes;
+    }, error => {
+      console.log(error);
+    });
   }
 
   get serviceCode() {
@@ -56,10 +66,6 @@ export class FacilityCreateComponent implements OnInit {
   get serviceName() {
     return this.facilityForm.get('serviceName');
   }
-
-  // get serviceImage() {
-  //   return this.facilityForm.get('serviceImage');
-  // }
 
   get serviceArea() {
     return this.facilityForm.get('serviceArea');
@@ -102,9 +108,9 @@ export class FacilityCreateComponent implements OnInit {
   }
 
   showCreateForm(event) {
-    console.log(event);
+    // console.log(event);
     this.checking = event.target.value;
-    console.log(this.checking);
+    // console.log(this.checking);
     if (event.target.value == 0) {
       this.facilityForm.clearValidators();
       this.checking = 0;
@@ -116,7 +122,7 @@ export class FacilityCreateComponent implements OnInit {
       this.facilityForm.controls['numberOfFloors'].setValue('');
       this.facilityForm.controls['poolArea'].setValue('');
       this.facilityForm.controls['rentType'].setValue(4);
-      this.facilityForm.controls['freeAttachedService'].setValue('');
+      this.facilityForm.controls['freeAttachedService'].setValue('none');
     }
     if (event.target.value == 2) {
       this.facilityForm.clearValidators();
@@ -125,7 +131,7 @@ export class FacilityCreateComponent implements OnInit {
       this.facilityForm.controls['numberOfFloors'].setValue('');
       this.facilityForm.controls['rentType'].setValue(4);
       this.facilityForm.controls['poolArea'].setValue(0);
-      this.facilityForm.controls['freeAttachedService'].setValue('');
+      this.facilityForm.controls['freeAttachedService'].setValue('none');
     }
     if (event.target.value == 3) {
       this.facilityForm.clearValidators();
@@ -134,40 +140,48 @@ export class FacilityCreateComponent implements OnInit {
       this.facilityForm.controls['rentType'].setValue(4);
       this.facilityForm.controls['numberOfFloors'].setValue(0);
       this.facilityForm.controls['poolArea'].setValue(0);
-      this.facilityForm.controls['standardRoom'].setValue('');
+      this.facilityForm.controls['freeAttachedService'].setValue('');
+      this.facilityForm.controls['standardRoom'].setValue('none');
+      this.facilityForm.controls['descriptionOtherConvenience'].setValue('none');
     }
   }
 
   onSubmit() {
     if (this.facilityForm.invalid) {
+      console.log(this.facilityForm.value);
       if (this.serviceCode.value == '') {
-        this.serviceCode.setErrors({empty: 'Empty! Please input!'})
+        this.serviceCode.setErrors({empty: 'Empty! Please input!'});
       }
       if (this.serviceName.value == '') {
-        this.serviceName.setErrors({empty: 'Empty! Please input!'})
+        this.serviceName.setErrors({empty: 'Empty! Please input!'});
       }
       if (this.serviceArea.value == '') {
-        this.serviceArea.setErrors({empty: 'Empty! Please input!'})
+        this.serviceArea.setErrors({empty: 'Empty! Please input!'});
       }
       if (this.serviceCost.value == '') {
-        this.serviceCost.setErrors({empty: 'Empty! Please input!'})
+        this.serviceCost.setErrors({empty: 'Empty! Please input!'});
       }
 
       if (this.serviceMaxPeople.value == '') {
-        this.serviceMaxPeople.setErrors({empty: 'Empty! Please input!'})
+        this.serviceMaxPeople.setErrors({empty: 'Empty! Please input!'});
       }
       if (this.poolArea.value == '') {
-        this.poolArea.setErrors({empty: 'Empty! Please input!'})
+        this.poolArea.setErrors({empty: 'Empty! Please input!'});
       }
       if (this.numberOfFloors.value == '') {
-        this.numberOfFloors.setErrors({empty: 'Empty! Please input!'})
+        this.numberOfFloors.setErrors({empty: 'Empty! Please input!'});
       }
-      this.router.navigateByUrl('facility/facility-create');
+      this.router.navigateByUrl('/facility/facility-create');
     } else {
       const facility = this.facilityForm.value;
-      this.facilityService.createFacility(facility);
-      this.router.navigateByUrl('facility/facility-list');
+      console.log(facility);
+      this.facilityService.createFacilityAPI(facility).subscribe(() => {
+        this.facilityForm.reset();
+        this.router.navigateByUrl('/facility/facility-list');
+        console.log('Add success!');
+      }, (error) => {
+        console.log(error);
+      });
     }
-
   }
 }

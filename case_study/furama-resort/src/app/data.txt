@@ -235,6 +235,7 @@
       "active": 1
     },
     {
+      "id": 3,
       "serviceCode": "DV-0003",
       "serviceName": "Room Twin 01",
       "serviceImage": "../../assets/img/home/explore2.png",
@@ -245,7 +246,7 @@
       "descriptionOtherConvenience": "Có tivi",
       "poolArea": 0,
       "numberOfFloors": 0,
-      "freeAttachedService": "có kèm ăn sáng ",
+      "freeAttachedService": "",
       "rentType": {
         "rentTypeId": 4,
         "rentTypeName": "hour",
@@ -257,8 +258,7 @@
         "facilityTypeName": "room",
         "active": 1
       },
-      "active": 1,
-      "id": 3
+      "active": 1
     },
     {
       "id": 4,
@@ -287,6 +287,7 @@
       "active": 1
     },
     {
+      "id": 5,
       "serviceCode": "DV-0005",
       "serviceName": "House Princess 02",
       "serviceImage": "../../assets/img/home/explore4.png",
@@ -297,7 +298,7 @@
       "descriptionOtherConvenience": "Có thêm bếp nướng",
       "poolArea": 0,
       "numberOfFloors": 2,
-      "freeAttachedService": "có kèm ăn sáng ",
+      "freeAttachedService": "",
       "rentType": {
         "rentTypeId": 3,
         "rentTypeName": "day",
@@ -309,8 +310,33 @@
         "facilityTypeName": "villa",
         "active": 1
       },
-      "active": 1,
-      "id": 5
+      "active": 1
+    },
+    {
+      "id": 6,
+      "serviceCode": "DV-0006",
+      "serviceName": "Room Twin 02",
+      "serviceImage": "../../assets/img/home/explore5.png",
+      "serviceArea": 3000,
+      "serviceCost": 900000,
+      "serviceMaxPeople": 2,
+      "standardRoom": "normal",
+      "descriptionOtherConvenience": "Có tivi",
+      "poolArea": 0,
+      "numberOfFloors": 0,
+      "freeAttachedService": "",
+      "rentType": {
+        "rentTypeId": 4,
+        "rentTypeName": "hour",
+        "rentTypeCost": 10000000,
+        "active": 1
+      },
+      "facilityType": {
+        "facilityTypeId": 3,
+        "facilityTypeName": "room",
+        "active": 1
+      },
+      "active": 1
     }
   ],
   "facilityTypes": [

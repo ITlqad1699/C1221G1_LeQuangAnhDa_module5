@@ -24,9 +24,9 @@
     <form [formGroup]="facilityForm" id="showCreateFormVilla" method="post">
       <div class="col-8 mx-auto">
         <div class="mx-auto shadow-lg p-3 mb-5 bg-white rounded-lg">
-          <input name="customerId" hidden formControlName="serviceId">
-          <input name="active" hidden formControlName="active">
-          <input name="active" hidden formControlName="serviceImage">
+          <input type="hidden" formControlName="id">
+          <input type="hidden" formControlName="serviceImage">
+          <input type="hidden" formControlName="active">
           <div class="form-group row">
             <label for="name" class="col-sm-3 col-form-label">Name</label>
             <div class="col-sm-9">
@@ -179,7 +179,7 @@
           <div class="d-flex justify-content-center">
             <div class="mx-2">
               <a class="button button--cancel cancel-banner-btn"
-                 [routerLink]="['/facility-list']">Cancel</a>
+                 [routerLink]="['/facility/facility-list']">Cancel</a>
             </div>
             <div class="mx-2">
               <a class="button button--active home-banner-btn"

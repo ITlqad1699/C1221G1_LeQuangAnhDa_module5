@@ -44,14 +44,14 @@
                       </button>
                     </li>
                     <li class="nav-item">
-                      <button class="btn btn-warning w-100" routerLink="/facility/facility-edit/{{facility.serviceId}}">
+                      <button class="btn btn-warning w-100" [routerLink]="['/facility/facility-edit', facility.id]">
                         <i class='ti-settings'></i>
                       </button>
                     </li>
                     <li class="nav-item">
                       <button class="btn btn-danger w-100" data-target="#deleteModal"
                               data-toggle="modal"
-                              (click)="sendNameProduct(facility.serviceId, facility.serviceName)">
+                              (click)="sendNameProduct(facility.id, facility.serviceName)">
                         <i class='bx bx-trash'></i>
                       </button>
                     </li>

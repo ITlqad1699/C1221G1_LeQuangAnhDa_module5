@@ -43,7 +43,7 @@ export class ContractService {
         active: 1
       },
       services: {
-        serviceId: 3,
+        id: 3,
         serviceCode: "DV-0003",
         serviceName: "Room Twin 01",
         serviceImage: "../../assets/img/home/explore2.png",
@@ -104,7 +104,7 @@ export class ContractService {
         active: 1
       },
       services: {
-        serviceId: 1,
+        id: 1,
         serviceCode: "DV-0001",
         serviceName: "Villa Beach Front",
         serviceImage: "../../assets/img/home/explore1.png",
@@ -165,7 +165,7 @@ export class ContractService {
         active: 1
       },
       services: {
-        serviceId: 2,
+        id: 2,
         serviceCode: "DV-0002",
         serviceName: "House Princess 01",
         serviceImage: "../../assets/img/home/explore6.png",
@@ -226,7 +226,7 @@ export class ContractService {
         active: 1
       },
       services: {
-        serviceId: 5,
+        id: 5,
         serviceCode: "DV-0005",
         serviceName: "House Princess 02",
         serviceImage: "../../assets/img/home/explore4.png",
@@ -287,7 +287,7 @@ export class ContractService {
         active: 1
       },
       services: {
-        serviceId: 6,
+        id: 6,
         serviceCode: "DV-0006",
         serviceName: "Room Twin 02",
         serviceImage: "../../assets/img/home/explore5.png",

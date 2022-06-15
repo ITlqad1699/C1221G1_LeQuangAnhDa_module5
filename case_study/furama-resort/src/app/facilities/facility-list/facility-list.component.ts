@@ -27,7 +27,13 @@ export class FacilityListComponent implements OnInit {
   }
 
   getAllFacility() {
-    this.facilities = this.facilityService.getFacilities();
+    this.facilityService.getAllFacilityAPI().subscribe(facilities => {
+        this.facilities = facilities;
+        console.log(this.facilities);
+      },
+      error => {
+        console.log(error);
+      });
     console.log(this.facilities);
   }
 
@@ -37,8 +43,17 @@ export class FacilityListComponent implements OnInit {
   }
 
   deleteFacility(closeModal: HTMLButtonElement) {
-    this.facilityDelete = this.facilityService.findById(this.idDelete);
-    this.facilityService.deleteService(this.facilityDelete.serviceId);
+    this.facilityService.fingByIdAPI(this.idDelete).subscribe(res => {
+      this.facilityDelete = res;
+      console.log(this.facilityDelete);
+      this.facilityService.deleteFacilityAPI(this.facilityDelete.id).subscribe(() => {
+        this.ngOnInit();
+        console.log(this.facilityDelete);
+        this.router.navigateByUrl('/facility/facility-list');
+        closeModal.click()
+      });
+    });
+
     this.router.navigate(['facility-list']);
     this.ngOnInit();
     console.log(this.facilityDelete);

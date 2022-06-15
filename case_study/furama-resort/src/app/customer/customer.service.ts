@@ -311,12 +311,12 @@ export class CustomerService {
   //     }
   //   }
   // }
-
-  public deleteCustomer(id: number) {
-    this.customers = this.customers.filter(customer => {
-      return customer.id != id;
-    });
-  }
+  //
+  // public deleteCustomer(id: number) {
+  //   this.customers = this.customers.filter(customer => {
+  //     return customer.id != id;
+  //   });
+  // }
 
   public createCustomerAPI(customer: Customer): Observable<void> {
     return this.httpClient.post<void>(API_URL + '/customer', customer);
@@ -326,8 +326,8 @@ export class CustomerService {
     return this.httpClient.get<Customer[]>(API_URL + '/customer').pipe((response: any) => response);
   }
 
-  public fingByIdAPI(id : number): Observable<Customer> {
-    return this.httpClient.get<Customer>(`${API_URL}/customer/${id}`)
+  public fingByIdAPI(id: number): Observable<Customer> {
+    return this.httpClient.get<Customer>(`${API_URL}/customer/${id}`);
   }
 
   public updateCustomerAPI(id: number, customer: Customer): Observable<void> {

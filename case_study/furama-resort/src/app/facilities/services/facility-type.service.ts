@@ -1,5 +1,10 @@
 import {Injectable} from '@angular/core';
 import {FacilityType} from '../models/facilityType';
+import {Observable} from 'rxjs';
+import {environment} from '../../../environments/environment';
+import {HttpClient} from '@angular/common/http';
+
+const API_URL = `${environment.url3000}`;
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +31,12 @@ export class FacilityTypeService {
       }
     ];
     return facilityTypes;
+  }
+
+  constructor(private httpClient: HttpClient) {
+  }
+
+  public getAllFacilityTypeAPI(): Observable<FacilityType[]> {
+    return this.httpClient.get<FacilityType[]>(API_URL + '/facilityTypes').pipe((response: any) => response);
   }
 }

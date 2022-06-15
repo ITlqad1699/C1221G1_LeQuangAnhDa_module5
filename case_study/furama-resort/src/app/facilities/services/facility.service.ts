@@ -1,6 +1,11 @@
 import {Injectable} from '@angular/core';
+
+import {Observable} from 'rxjs';
+import {environment} from '../../../environments/environment';
+import {HttpClient} from '@angular/common/http';
 import {Facility} from '../models/facility';
-import {Customer} from '../../customer/models/customer';
+
+const API_URL = `${environment.url3000}`;
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +14,7 @@ export class FacilityService {
 
   private facilities: Facility[] = [
     {
-      serviceId: 1,
+      id: 1,
       serviceCode: 'DV-0001',
       serviceName: 'Villa Beach Front',
       serviceImage: '../../assets/img/home/explore1.png',
@@ -35,7 +40,7 @@ export class FacilityService {
       active: 1
     },
     {
-      serviceId: 2,
+      id: 2,
       serviceCode: 'DV-0002',
       serviceName: 'House Princess 01',
       serviceImage: '../../assets/img/home/explore6.png',
@@ -61,7 +66,7 @@ export class FacilityService {
       active: 1
     },
     {
-      serviceId: 3,
+      id: 3,
       serviceCode: 'DV-0003',
       serviceName: 'Room Twin 01',
       serviceImage: '../../assets/img/home/explore2.png',
@@ -87,7 +92,7 @@ export class FacilityService {
       active: 1
     },
     {
-      serviceId: 4,
+      id: 4,
       serviceCode: 'DV-0004',
       serviceName: 'Villa No Beach Front',
       serviceImage: '../../assets/img/home/explore3.png',
@@ -113,7 +118,7 @@ export class FacilityService {
       active: 1
     },
     {
-      serviceId: 5,
+      id: 5,
       serviceCode: 'DV-0005',
       serviceName: 'House Princess 02',
       serviceImage: '../../assets/img/home/explore4.png',
@@ -139,7 +144,7 @@ export class FacilityService {
       active: 1
     },
     {
-      serviceId: 6,
+      id: 6,
       serviceCode: 'DV-0006',
       serviceName: 'Room Twin 02',
       serviceImage: '../../assets/img/home/explore5.png',
@@ -170,28 +175,53 @@ export class FacilityService {
     return this.facilities;
   }
 
-  public createFacility(facility) {
-    facility.serviceId = this.facilities.length + 1;
-    facility.active = 1;
-    facility.serviceImage = '../../assets/img/home/explore6.png';
-    this.facilities.push(facility);
-  }
+  // public createFacility(facility) {
+  //   facility.serviceId = this.facilities.length + 1;
+  //   facility.active = 1;
+  //   facility.serviceImage = '../../assets/img/home/explore6.png';
+  //   this.facilities.push(facility);
+  // }
 
   public findById(id: number): Facility {
-    return this.facilities.find(facility => facility.serviceId == id);
+    return this.facilities.find(facility => facility.id == id);
   }
+
   public deleteService(id: number) {
     this.facilities = this.facilities.filter(facility => {
-      return facility.serviceId != id;
+      return facility.id != id;
     });
   }
 
   public updateFacility(id: number, facility: Facility) {
     for (let i = 0; i < this.facilities.length; i++) {
-      if (this.facilities[i].serviceId == id) {
+      if (this.facilities[i].id == id) {
         this.facilities[i] = facility;
       }
     }
+  }
+
+  constructor(private httpClient: HttpClient) {
+  }
+
+  public createFacilityAPI(facility: Facility): Observable<void> {
+    console.log('abc');
+    return this.httpClient.post<void>(API_URL + '/facilities', facility);
+  }
+
+  public getAllFacilityAPI(): Observable<Facility[]> {
+    return this.httpClient.get<Facility[]>(API_URL + '/facilities').pipe((response: any) => response);
+  }
+
+  public fingByIdAPI(id: number): Observable<Facility> {
+    return this.httpClient.get<Facility>(`${API_URL}/facilities/${id}`);
+  }
+
+  public updateFacilityAPI(id: number, Facility: Facility): Observable<void> {
+    return this.httpClient.put<void>(`${API_URL}/facilities/${id}`, Facility);
+  }
+
+  public deleteFacilityAPI(id: number): Observable<Facility> {
+    return this.httpClient.delete<Facility>(`${API_URL}/facilities/${id}`);
   }
 }
 

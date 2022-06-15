@@ -42,6 +42,9 @@
       <form [formGroup]="facilityForm" id="showCreateFormVilla" method="post">
         <div class="col-8 mx-auto">
           <div class="mx-auto shadow-lg p-3 mb-5 bg-white rounded-lg">
+            <input type="hidden" formControlName="id">
+            <input type="hidden" formControlName="serviceImage">
+            <input type="hidden" formControlName="active">
             <div class="form-group row">
               <label for="name" class="col-sm-3 col-form-label">Name</label>
               <div class="col-sm-9">
@@ -163,11 +166,11 @@
               </div>
             </div>
             <!--                Room-->
-            <div id="roomOnly" [style.display]="'none'">
+            <div id="roomOnly" [style.display]="'none'" >
               <div class="form-group row">
-                <label for="freeServiceInclude" class="col-sm-3 col-form-label">Free service include</label>
+                <label for="freeServiceInclude" class="col-sm-3 col-form-label" >Free service include</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" id="freeServiceInclude" formControlName="freeAttachedService">
+                  <input type="text" class="form-control" id="freeServiceInclude" formControlName="freeAttachedService" >
                   <div
                     *ngIf="freeAttachedService.invalid && (freeAttachedService.dirty || freeAttachedService.touched) || freeAttachedService.errors?.empty">
                   <span *ngIf="freeAttachedService.errors.required || freeAttachedService.errors.empty"
@@ -195,6 +198,9 @@
       <form [formGroup]="facilityForm" id="showCreateFormHouse" method="post">
         <div class="col-8 mx-auto">
           <div class="mx-auto shadow-lg p-3 mb-5 bg-white rounded-lg">
+            <input type="hidden" formControlName="id">
+            <input type="hidden" formControlName="serviceImage">
+            <input type="hidden" formControlName="active">
             <div class="form-group row">
               <label for="name1" class="col-sm-3 col-form-label">Name</label>
               <div class="col-sm-9">
@@ -348,6 +354,9 @@
       <form [formGroup]="facilityForm" id="showCreateFormRoom" method="post">
         <div class="col-8 mx-auto">
           <div class="mx-auto shadow-lg p-3 mb-5 bg-white rounded-lg">
+            <input type="hidden" formControlName="id">
+            <input type="hidden" formControlName="serviceImage">
+            <input type="hidden" formControlName="active">
             <div class="form-group row">
               <label for="name" class="col-sm-3 col-form-label">Name</label>
               <div class="col-sm-9">

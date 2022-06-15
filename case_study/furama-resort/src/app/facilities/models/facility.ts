@@ -2,7 +2,7 @@ import {RentType} from './rentType';
 import {FacilityType} from './facilityType';
 
 export class Facility {
-  serviceId: number;
+  id: number;
 
   serviceCode: string;
 
