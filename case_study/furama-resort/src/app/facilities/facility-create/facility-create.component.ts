@@ -4,9 +4,9 @@ import {FacilityType} from '../models/facilityType';
 import {RentType} from '../models/rentType';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
-import {RentTypeService} from '../services/rent-type-service';
-import {FacilityService} from '../services/facility-service';
-import {FacilityTypeService} from '../services/facility-type-service';
+import {RentTypeService} from '../services/rent-type.service';
+import {FacilityService} from '../services/facility.service';
+import {FacilityTypeService} from '../services/facility-type.service';
 
 @Component({
   selector: 'app-facility-create',
@@ -162,11 +162,11 @@ export class FacilityCreateComponent implements OnInit {
       if (this.numberOfFloors.value == '') {
         this.numberOfFloors.setErrors({empty: 'Empty! Please input!'})
       }
-      this.router.navigateByUrl('/facility-create');
+      this.router.navigateByUrl('facility/facility-create');
     } else {
       const facility = this.facilityForm.value;
       this.facilityService.createFacility(facility);
-      this.router.navigateByUrl('/facility-list');
+      this.router.navigateByUrl('facility/facility-list');
     }
 
   }

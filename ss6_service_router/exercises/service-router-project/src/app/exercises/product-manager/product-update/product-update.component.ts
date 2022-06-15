@@ -29,6 +29,7 @@ export class ProductUpdateComponent implements OnInit {
   getProduct(id: number) {
     return this.productService.findById(id);
   }
+
   updateProduct(id: number) {
     const product = this.productForm.value;
     this.productService.updateProduct(id, product);

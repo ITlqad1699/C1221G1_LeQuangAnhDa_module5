@@ -1,7 +1,7 @@
 import {CustomerType} from './customerType';
 
 export class Customer {
-  customerId: number;
+  id: number;
 
   customerCode: string;
 

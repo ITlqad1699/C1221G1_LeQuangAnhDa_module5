@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Customer} from '../models/customer';
 import {Router} from '@angular/router';
-import {CustomerService} from '../service/customer-service';
+import {CustomerService} from '../customer.service';
+import {Subscription} from 'rxjs';
+
 declare let createThreeDots: any;
 
 @Component({
@@ -16,8 +18,10 @@ export class CustomerListComponent implements OnInit {
   totalPages = 0;
   pageNumber = '';
   idDelete = 0;
-  nameDelete = '';
-  constructor(private router: Router,private customerService: CustomerService) { }
+  nameDelete = '';e
+
+  constructor(private router: Router, private customerService: CustomerService) {
+  }
 
   ngOnInit(): void {
     this.getAllCustomer();
@@ -25,22 +29,32 @@ export class CustomerListComponent implements OnInit {
     new createThreeDots();
   }
 
-  getAllCustomer(){
-    this.customers = this.customerService.getCustomer();
-    console.log(this.customers);
+  getAllCustomer() {
+    this.customerService.getAllCustomerAPI()
+      .subscribe(data => {
+          this.customers = data;
+        }, error => {
+          console.log(error);
+        }
+      );
   }
 
-  sendNameProduct(idValue: number, nameValue: string){
-      this.idDelete = idValue;
-      this.nameDelete = nameValue;
+  sendNameProduct(idValue: number, nameValue: string) {
+    this.idDelete = idValue;
+    this.nameDelete = nameValue;
   }
-  deleteCustomer(closeModal: HTMLButtonElement){
-      this.customerDelete = this.customerService.findById(this.idDelete);
-      this.customerService.deleteCustomer(this.customerDelete.customerId);
-      this.router.navigate(['customer-list']);
-      this.ngOnInit();
+
+  deleteCustomer(closeModal: HTMLButtonElement) {
+    this.customerService.fingByIdAPI(this.idDelete).subscribe(res => {
+      this.customerDelete = res;
       console.log(this.customerDelete);
-      closeModal.click();
+      this.customerService.deleteCustomerAPI(this.customerDelete.id).subscribe(() => {
+        console.log("Delete success!");
+        this.getAllCustomer();
+        this.router.navigate(['/customer/customer-list']);
+        closeModal.click();
+      });
+    });
   }
 }
 

@@ -4,9 +4,9 @@ import {RentType} from '../models/rentType';
 import {FacilityType} from '../models/facilityType';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import {RentTypeService} from '../services/rent-type-service';
-import {FacilityService} from '../services/facility-service';
-import {FacilityTypeService} from '../services/facility-type-service';
+import {RentTypeService} from '../services/rent-type.service';
+import {FacilityService} from '../services/facility.service';
+import {FacilityTypeService} from '../services/facility-type.service';
 
 @Component({
   selector: 'app-facility-edit',
@@ -156,12 +156,12 @@ export class FacilityEditComponent implements OnInit {
       if (this.freeAttachedService.value == null) {
         this.numberOfFloors.setErrors({empty: 'Empty! Please input!'});
       }
-      this.router.navigateByUrl('/facility-edit/' + this.serviceId.value);
+      this.router.navigateByUrl('facility/facility-edit/' + this.serviceId.value);
     } else {
       const facility = this.facilityForm.value;
       console.log(facility);
       this.facilityService.updateFacility(serviceId,facility);
-      this.router.navigateByUrl('/facility-list');
+      this.router.navigateByUrl('facility/facility-list');
     }
   }
 }

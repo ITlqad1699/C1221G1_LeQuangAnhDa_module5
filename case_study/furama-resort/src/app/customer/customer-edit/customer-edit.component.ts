@@ -3,8 +3,9 @@ import {Customer} from '../models/customer';
 import {CustomerType} from '../models/customerType';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router, ActivatedRoute, ParamMap} from '@angular/router';
-import {CustomerService} from '../service/customer-service';
-import {CustomerTypeService} from '../service/customer-type-service';
+import {CustomerService} from '../customer.service';
+import {CustomerTypeService} from '../customer-type.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-customer-edit',
@@ -17,7 +18,7 @@ export class CustomerEditComponent implements OnInit {
   customers: Customer[] = [];
   customerTypes: CustomerType[] = [];
   customerForm: FormGroup;
-
+  private subcription: Subscription;
   constructor(private router: Router,
               private customerService: CustomerService,
               private customerTypeService: CustomerTypeService,
@@ -25,19 +26,17 @@ export class CustomerEditComponent implements OnInit {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = +paramMap.get('id');
       console.log(this.id);
-      const customer = this.findByid(this.id);
       this.customerForm = new FormGroup({
-        customerId: new FormControl(customer.customerId, [Validators.required]),
-        customerCode: new FormControl(customer.customerCode, [Validators.required, Validators.pattern('^$|^KH-[\\d]{4}$')]),
-        customerName: new FormControl(customer.customerName, [Validators.required, Validators.pattern('^$|^[A-Za-z ]+$')]),
-        customerBirthday: new FormControl(customer.customerBirthday, [Validators.required, Validators.pattern('^$|^\\d{4}-\\d{2}-\\d{2}$')]),
-        customerGender: new FormControl(customer.customerGender, Validators.required),
-        customerIdCard: new FormControl(customer.customerIdCard, [Validators.required, Validators.pattern('^$|^\\d{9}$')]),
-        customerPhone: new FormControl(customer.customerPhone, [Validators.required, Validators.pattern('^(091|090|\\(\\+84\\)90|\\(\\+84\\)91)\\d{7}$')]),
-        //check lại validate number phone
-        customerEmail: new FormControl(customer.customerEmail, [Validators.required, Validators.email]),
-        customerAddress: new FormControl(customer.customerAddress, Validators.required),
-        customerType: new FormControl(customer.customerType, Validators.required),
+        id: new FormControl('', [Validators.required]),
+        customerCode: new FormControl('', [Validators.required, Validators.pattern('^$|^KH-[\\d]{4}$')]),
+        customerName: new FormControl('', [Validators.required, Validators.pattern('^$|^[A-Za-z ]+$')]),
+        customerBirthday: new FormControl('', [Validators.required, Validators.pattern('^$|^\\d{4}-\\d{2}-\\d{2}$')]),
+        customerGender: new FormControl('', Validators.required),
+        customerIdCard: new FormControl('', [Validators.required, Validators.pattern('^$|^\\d{9}$')]),
+        customerPhone: new FormControl('', [Validators.required, Validators.pattern('^(091|090|\\(\\+84\\)90|\\(\\+84\\)91)\\d{7}$')]),
+        customerEmail: new FormControl('', [Validators.required, Validators.email]),
+        customerAddress: new FormControl('', Validators.required),
+        customerType: new FormControl('', Validators.required),
         active: new FormControl()
       });
     });
@@ -86,17 +85,35 @@ export class CustomerEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.customerTypes = this.customerTypeService.getCustomerTypes();
+      this.getAllCustomerTypes();
+      this.findByid(this.id);
   }
 
   findByid(id: number) {
-    return this.customerService.findById(id);
+    return this.customerService.fingByIdAPI(id).subscribe(customer => {
+      this.customer = customer;
+        console.log(this.customer);
+        this.customerForm.patchValue(this.customer);
+    });
   }
 
-  updateCustomer(customerId: number){
+  getAllCustomerTypes() {
+    this.customerTypeService.getAllCustomerType().subscribe(
+      data => {
+        this.customerTypes = data;
+      }, error => {
+        console.log(error);
+      });
+  }
+
+  updateCustomer(id: number){
     const customer = this.customerForm.value;
-    console.log(customer);
-    this.customerService.updateCustomer(customerId, customer);
+    this.customerService.updateCustomerAPI(id, customer).subscribe(() => {
+      this.customerForm.reset();
+      console.log('Add success!');
+    },error => {
+      console.log(error);
+    });
   }
 
   compareFn(t1, t2): boolean {

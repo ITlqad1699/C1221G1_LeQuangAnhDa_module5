@@ -16,7 +16,7 @@ export class ContractService {
       contractDeposit: 0,
       contractTotalMoney: 1000000,
       customer: {
-        customerId: 1,
+        id: 1,
 
         customerCode: 'KH-0001',
 
@@ -77,7 +77,7 @@ export class ContractService {
       contractDeposit: 200000,
       contractTotalMoney: 2000000,
       customer: {
-        customerId: 3,
+        id: 3,
 
         customerCode: 'KH-0003',
 
@@ -138,7 +138,7 @@ export class ContractService {
       contractDeposit: 50000,
       contractTotalMoney: 1500000,
       customer: {
-        customerId: 4,
+        id: 4,
 
         customerCode: "KH-0004",
 
@@ -199,7 +199,7 @@ export class ContractService {
       contractDeposit: 100000,
       contractTotalMoney: 1400000,
       customer: {
-        customerId: 5,
+        id: 5,
 
         customerCode: 'KH-0005',
 
@@ -260,7 +260,7 @@ export class ContractService {
       contractDeposit: 0,
       contractTotalMoney: 100000,
       customer: {
-        customerId: 2,
+        id: 2,
 
         customerCode: 'KH-0002',
 

@@ -1,14 +1,19 @@
 import {Injectable} from '@angular/core';
-import {Customer} from '../models/customer';
-import {CustomerType} from '../models/customerType';
+import {Customer} from './models/customer';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {environment} from 'src/environments/environment';
+
+const API_URL = `${environment.url3000}`;
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
+
   private customers: Customer[] = [
     {
-      customerId: 1,
+      id: 1,
 
       customerCode: 'KH-0001',
 
@@ -35,7 +40,7 @@ export class CustomerService {
       active: 1
     },
     {
-      customerId: 2,
+      id: 2,
 
       customerCode: 'KH-0002',
 
@@ -62,7 +67,7 @@ export class CustomerService {
       active: 1
     },
     {
-      customerId: 3,
+      id: 3,
 
       customerCode: 'KH-0003',
 
@@ -89,7 +94,7 @@ export class CustomerService {
       active: 1
     },
     {
-      customerId: 4,
+      id: 4,
 
       customerCode: 'KH-0004',
 
@@ -116,7 +121,7 @@ export class CustomerService {
       active: 1
     },
     {
-      customerId: 5,
+      id: 5,
 
       customerCode: 'KH-0005',
 
@@ -143,7 +148,7 @@ export class CustomerService {
       active: 1
     },
     {
-      customerId: 6,
+      id: 6,
 
       customerCode: 'KH-0006',
 
@@ -170,7 +175,7 @@ export class CustomerService {
       active: 1
     },
     {
-      customerId: 7,
+      id: 7,
 
       customerCode: 'KH-0007',
 
@@ -197,7 +202,7 @@ export class CustomerService {
       active: 1
     },
     {
-      customerId: 8,
+      id: 8,
 
       customerCode: 'KH-0008',
 
@@ -224,7 +229,7 @@ export class CustomerService {
       active: 1
     },
     {
-      customerId: 9,
+      id: 9,
 
       customerCode: 'KH-0009',
 
@@ -251,7 +256,7 @@ export class CustomerService {
       active: 1
     },
     {
-      customerId: 10,
+      id: 10,
 
       customerCode: 'KH-0010',
 
@@ -279,31 +284,57 @@ export class CustomerService {
     }
   ];
 
+  private readonly API_URL_CUSTOMER = 'http://localhost:3000/customer';
+
+  constructor(private httpClient: HttpClient) {
+  }
+
+
   public getCustomer() {
     return this.customers;
   }
 
   public findById(id: number) {
-    return this.customers.find(customer => customer.customerId==id);
+    return this.customers.find(customer => customer.id == id);
   }
 
-  public createCustomer(customer: Customer) {
-    customer.customerId = this.customers.length + 1;
-    customer.active = 1;
-    this.customers.push(customer);
-  }
-
-  public updateCustomer(id: number, customer: Customer) {
-    for (let i = 0; i < this.customers.length; i++) {
-      if (this.customers[i].customerId == id) {
-        this.customers[i] = customer;
-      }
-    }
-  }
+  // public createCustomer(customer: Customer) {
+  //   customer.id = this.customers.length + 1;
+  //   customer.active = 1;
+  //   this.customers.push(customer);
+  // }
+  //
+  // public updateCustomer(id: number, customer: Customer) {
+  //   for (let i = 0; i < this.customers.length; i++) {
+  //     if (this.customers[i].id == id) {
+  //       this.customers[i] = customer;
+  //     }
+  //   }
+  // }
 
   public deleteCustomer(id: number) {
     this.customers = this.customers.filter(customer => {
-      return customer.customerId != id;
+      return customer.id != id;
     });
+  }
+
+  public createCustomerAPI(customer: Customer): Observable<void> {
+    return this.httpClient.post<void>(API_URL + '/customer', customer);
+  }
+
+  public getAllCustomerAPI(): Observable<Customer[]> {
+    return this.httpClient.get<Customer[]>(API_URL + '/customer').pipe((response: any) => response);
+  }
+
+  public fingByIdAPI(id : number): Observable<Customer> {
+    return this.httpClient.get<Customer>(`${API_URL}/customer/${id}`)
+  }
+
+  public updateCustomerAPI(id: number, customer: Customer): Observable<void> {
+    return this.httpClient.put<void>(`${API_URL}/customer/${id}`, customer);
+  }
+
+  public deleteCustomerAPI(id: number): Observable<Customer> {
+    return this.httpClient.delete<Customer>(`${API_URL}/customer/${id}`);
   }
 }

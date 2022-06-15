@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import {Customer} from 'src/app/customer/models/customer';
 import {Facility} from 'src/app/facilities/models/facility';
 import {ActivatedRoute, Router} from '@angular/router';
-import {CustomerService} from 'src/app/customer/service/customer-service';
-import {FacilityService} from 'src/app/facilities/services/facility-service';
-import {ContractService} from 'src/app/contract/service/contract-service';
+import {CustomerService} from 'src/app/customer/customer.service';
+import {FacilityService} from 'src/app/facilities/services/facility.service';
+import {ContractService} from 'src/app/contract/service/contract.service';
 
 @Component({
   selector: 'app-contract-create',
@@ -13,10 +13,15 @@ import {ContractService} from 'src/app/contract/service/contract-service';
   styleUrls: ['./contract-create.component.css']
 })
 export class ContractCreateComponent implements OnInit {
-  contractForm: FormGroup;
   customers: Customer[] = [];
   facilities: Facility[] = [];
-
+  contractForm: FormGroup = new FormGroup({
+    contractStartDate: new FormControl('', [Validators.required]),
+    contractEndDate: new FormControl('', [Validators.required]),
+    contractDeposit: new FormControl('', [Validators.required]),
+    customer: new FormControl('', [Validators.required]),
+    services: new FormControl('', [Validators.required]),
+  });
   constructor(private fb: FormBuilder,
               private route: ActivatedRoute,
               private router: Router,
@@ -26,16 +31,8 @@ export class ContractCreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.contractForm = this.fb.group({
-      contractStartDate: ['', [Validators.required]],
-      contractEndDate: ['', [Validators.required]],
-      contractDeposit: ['', [Validators.required]],
-      contractTotalMoney: ['', [Validators.required]],
-      customer: [1, [Validators.required]],
-      services: [1, [Validators.required]],
-    });
-    this.getAllCustomers();
-    this.getAllFacility();
+    this.customers = this.customerService.getCustomer();
+    this.facilities = this.facilityService.getFacilities();
   }
 
   get contractStartDate() {
@@ -50,9 +47,9 @@ export class ContractCreateComponent implements OnInit {
     return this.contractForm.get('contractDeposit');
   }
 
-  get contractTotalMoney() {
-    return this.contractForm.get('contractTotalMoney');
-  }
+  // get contractTotalMoney() {
+  //   return this.contractForm.get('contractTotalMoney');
+  // }
 
   // get employee() {
   //   return this.contractForm.get('employee');
@@ -71,16 +68,16 @@ export class ContractCreateComponent implements OnInit {
       let startDateParse = new Date(this.contractStartDate.value);
       let endDateParse = new Date(this.contractEndDate.value);
       if (endDateParse < startDateParse) {
-        this.contractStartDate.setErrors({dateErrors: 'Start date must be before end date!'});
-        this.contractEndDate.setErrors({dateErrors: 'End date must be after start date!'});
+        this.contractStartDate.setErrors({dateErrors: 'End date must be after start date! Please choose again!'});
+        this.contractEndDate.setErrors({dateErrors: 'End date must be after start date! Please choose again!'});
+      }
+    }
+    if (this.contractDeposit.value != '') {
+      if (this.contractDeposit.value < 0) {
+        this.contractDeposit.setErrors({active: 'must be positive'});
       }
     }
     if (this.contractForm.invalid) {
-      if (this.contractDeposit.value != '') {
-        if (this.contractDeposit.value < 0) {
-          this.contractDeposit.setErrors({active: 'must be positive'});
-        }
-      }
       if (this.contractStartDate.value == '') {
         this.contractStartDate.setErrors({empty: 'Empty! Please choose!'});
       }
@@ -96,20 +93,12 @@ export class ContractCreateComponent implements OnInit {
       if (this.services.value == '') {
         this.services.setErrors({empty: 'Empty! Please choose!'});
       }
-      this.router.navigateByUrl('/contract-create');
+      this.router.navigateByUrl('/contract/contract-create');
     } else {
       const contract = this.contractForm.value;
       console.log(contract);
       this.contractService.createContract(contract);
-      this.router.navigateByUrl('/contract-list');
+      this.router.navigateByUrl('/contract/contract-list');
     }
-  }
-
-  getAllCustomers() {
-    this.customers = this.customerService.getCustomer();
-  }
-
-  getAllFacility() {
-    this.facilities = this.facilityService.getFacilities();
   }
 }

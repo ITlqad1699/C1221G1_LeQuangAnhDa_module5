@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ContractService} from '../service/contract-service';
+import {ContractService} from '../service/contract.service';
 import {Router} from '@angular/router';
 import {Contract} from '../models/contract';
 declare let createThreeDots: any;
