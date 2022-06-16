@@ -1,0 +1,32 @@
+<div class="container col-8">
+  <h1>cập nhật sản phẩm</h1>
+  <form [formGroup]="productForm" (ngSubmit)="updateProduct(id)" class="form-control">
+    <table>
+      <tr>
+        <td>Tên sản phẩm:</td>
+        <td><input type="text" formControlName="name" class="form-control"></td>
+      </tr>
+      <tr>
+        <td>Giá sản phẩm</td>
+        <td><input type="number" formControlName="price" class="form-control"></td>
+      </tr>
+      <tr>
+        <td>Mô tả về sản phẩm</td>
+        <td><input type="text" formControlName="description" class="form-control"></td>
+      </tr>
+      <tr>
+        <td>Loại sản phẩm</td>
+        <td>
+          <select  class="form-control" formControlName="category" [compareWith]="compareFn">
+            <option [ngValue]="c" *ngFor="let c of categories">{{c.nameC}}</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><button class="btn btn-warning">Cập nhật</button></td>
+      </tr>
+    </table>
+  </form>
+</div>
+

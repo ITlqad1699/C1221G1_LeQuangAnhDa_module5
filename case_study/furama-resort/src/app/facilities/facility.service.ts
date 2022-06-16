@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 
 import {Observable} from 'rxjs';
-import {environment} from '../../../environments/environment';
+import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
-import {Facility} from '../models/facility';
+import {Facility} from './models/facility';
 
 const API_URL = `${environment.url3000}`;
 
@@ -174,13 +174,6 @@ export class FacilityService {
   public getFacilities() {
     return this.facilities;
   }
-
-  // public createFacility(facility) {
-  //   facility.serviceId = this.facilities.length + 1;
-  //   facility.active = 1;
-  //   facility.serviceImage = '../../assets/img/home/explore6.png';
-  //   this.facilities.push(facility);
-  // }
 
   public findById(id: number): Facility {
     return this.facilities.find(facility => facility.id == id);

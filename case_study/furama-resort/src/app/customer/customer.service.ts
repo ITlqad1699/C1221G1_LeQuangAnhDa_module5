@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {environment} from 'src/environments/environment';
 
 const API_URL = `${environment.url3000}`;
+const API_URL8080 = `${environment.url8080}`;
 
 @Injectable({
   providedIn: 'root'
@@ -284,20 +285,17 @@ export class CustomerService {
     }
   ];
 
-  private readonly API_URL_CUSTOMER = 'http://localhost:3000/customer';
-
   constructor(private httpClient: HttpClient) {
   }
-
 
   public getCustomer() {
     return this.customers;
   }
 
-  public findById(id: number) {
-    return this.customers.find(customer => customer.id == id);
-  }
-
+  // public findById(id: number) {
+  //   return this.customers.find(customer => customer.id == id);
+  // }
+  //
   // public createCustomer(customer: Customer) {
   //   customer.id = this.customers.length + 1;
   //   customer.active = 1;

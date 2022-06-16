@@ -2,7 +2,7 @@ import { Customer } from '../../customer/models/customer';
 import { Facility } from '../../facilities/models/facility';
 
 export class Contract {
-  contractId:number;
+  id:number;
   contractStartDate: string;
   contractEndDate: string;
   contractDeposit: number;
@@ -11,3 +11,4 @@ export class Contract {
   services: Facility;
   active: number;
 }
+

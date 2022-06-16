@@ -4,8 +4,8 @@ import {Customer} from 'src/app/customer/models/customer';
 import {Facility} from 'src/app/facilities/models/facility';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CustomerService} from 'src/app/customer/customer.service';
-import {FacilityService} from 'src/app/facilities/services/facility.service';
-import {ContractService} from 'src/app/contract/service/contract.service';
+import {FacilityService} from 'src/app/facilities/facility.service';
+import {ContractService} from 'src/app/contract/contract.service';
 
 @Component({
   selector: 'app-contract-create',
@@ -16,11 +16,13 @@ export class ContractCreateComponent implements OnInit {
   customers: Customer[] = [];
   facilities: Facility[] = [];
   contractForm: FormGroup = new FormGroup({
+    id: new FormControl(),
     contractStartDate: new FormControl('', [Validators.required]),
     contractEndDate: new FormControl('', [Validators.required]),
     contractDeposit: new FormControl('', [Validators.required]),
     customer: new FormControl('', [Validators.required]),
     services: new FormControl('', [Validators.required]),
+    active: new FormControl(1)
   });
   constructor(private fb: FormBuilder,
               private route: ActivatedRoute,
@@ -97,8 +99,13 @@ export class ContractCreateComponent implements OnInit {
     } else {
       const contract = this.contractForm.value;
       console.log(contract);
-      this.contractService.createContract(contract);
-      this.router.navigateByUrl('/contract/contract-list');
+      this.contractService.createContractAPI(contract).subscribe(() => {
+        console.log("success");
+        this.router.navigateByUrl('/contract/contract-list');
+        this.ngOnInit();
+      }, error => {
+        console.log(error);
+      });
     }
   }
 }

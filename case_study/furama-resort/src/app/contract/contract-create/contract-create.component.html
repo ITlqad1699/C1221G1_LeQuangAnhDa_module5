@@ -28,6 +28,7 @@
     <form [formGroup] = "contractForm" method="post" >
       <div class="col-8 mx-auto">
         <div class="mx-auto shadow-lg p-3 mb-5 bg-white rounded-lg">
+          <input type="hidden" formControlName="id">
           <div class="form-group row">
             <label for="startDate" class="col-sm-3 col-form-label">Start Date</label>
             <div class="col-sm-9">

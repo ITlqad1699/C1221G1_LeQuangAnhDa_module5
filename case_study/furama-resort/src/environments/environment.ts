@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  url3000: 'http://localhost:3000'
+  url3000: 'http://localhost:3000',
+  url8080: 'http://localhost:8080',
 };
 
 /*

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FacilityService} from '../services/facility.service';
+import {FacilityService} from '../facility.service';
 import {Router} from '@angular/router';
 import {Facility} from '../models/facility';
 
@@ -53,10 +53,5 @@ export class FacilityListComponent implements OnInit {
         closeModal.click()
       });
     });
-
-    this.router.navigate(['facility-list']);
-    this.ngOnInit();
-    console.log(this.facilityDelete);
-    closeModal.click();
   }
 }

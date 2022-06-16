@@ -4,9 +4,9 @@ import {RentType} from '../models/rentType';
 import {FacilityType} from '../models/facilityType';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import {RentTypeService} from '../services/rent-type.service';
-import {FacilityService} from '../services/facility.service';
-import {FacilityTypeService} from '../services/facility-type.service';
+import {RentTypeService} from '../rent-type.service';
+import {FacilityService} from '../facility.service';
+import {FacilityTypeService} from '../facility-type.service';
 
 @Component({
   selector: 'app-facility-edit',
@@ -19,6 +19,7 @@ export class FacilityEditComponent implements OnInit {
   id: number;
   facilityTypes: FacilityType[] = [];
   facilityForm: FormGroup;
+  check = 0;
 
   constructor(private router: Router,
               private rentTypeService: RentTypeService,
@@ -40,11 +41,11 @@ export class FacilityEditComponent implements OnInit {
         serviceArea: [facility.serviceArea, [Validators.required]],
         serviceCost: [facility.serviceCost, [Validators.required]],
         serviceMaxPeople: [facility.serviceMaxPeople, [Validators.required]],
-        standardRoom: [facility.standardRoom, [Validators.required]],
-        descriptionOtherConvenience: [facility.descriptionOtherConvenience, [Validators.required]],
-        poolArea: [facility.poolArea, [Validators.required]],
-        numberOfFloors: [facility.numberOfFloors, [Validators.required]],
-        freeAttachedService: [facility.freeAttachedService, [Validators.required]],
+        standardRoom: [facility.standardRoom],
+        descriptionOtherConvenience: [facility.descriptionOtherConvenience],
+        poolArea: [facility.poolArea],
+        numberOfFloors: [facility.numberOfFloors],
+        freeAttachedService: [facility.freeAttachedService],
         rentType: [facility.rentType, [Validators.required]],
         facilityType: [facility.facilityType, [Validators.required]],
         active: [facility.active],
@@ -126,31 +127,6 @@ export class FacilityEditComponent implements OnInit {
 
   onSubmit(id: number) {
     if (this.facilityForm.invalid) {
-      if (this.serviceCode.value == '') {
-        this.serviceCode.setErrors({empty: 'Empty! Please input!'});
-      }
-      if (this.serviceName.value == '') {
-        this.serviceName.setErrors({empty: 'Empty! Please input!'});
-      }
-      if (this.serviceArea.value == '') {
-        this.serviceArea.setErrors({empty: 'Empty! Please input!'});
-      }
-      if (this.serviceCost.value == '') {
-        this.serviceCost.setErrors({empty: 'Empty! Please input!'});
-      }
-
-      if (this.serviceMaxPeople.value == '') {
-        this.serviceMaxPeople.setErrors({empty: 'Empty! Please input!'});
-      }
-      if (this.poolArea.value == null) {
-        this.poolArea.setErrors({empty: 'Empty! Please input!'});
-      }
-      if (this.numberOfFloors.value == null) {
-        this.numberOfFloors.setErrors({empty: 'Empty! Please input!'});
-      }
-      if (this.freeAttachedService.value == null) {
-        this.numberOfFloors.setErrors({empty: 'Empty! Please input!'});
-      }
       this.router.navigateByUrl('facility/facility-edit/' + this.id);
     } else {
       const facility = this.facilityForm.value;

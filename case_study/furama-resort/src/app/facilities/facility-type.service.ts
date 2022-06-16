@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {FacilityType} from '../models/facilityType';
+import {FacilityType} from './models/facilityType';
 import {Observable} from 'rxjs';
-import {environment} from '../../../environments/environment';
+import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 
 const API_URL = `${environment.url3000}`;

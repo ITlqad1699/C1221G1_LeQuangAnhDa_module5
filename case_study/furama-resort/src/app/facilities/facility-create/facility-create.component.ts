@@ -4,9 +4,9 @@ import {FacilityType} from '../models/facilityType';
 import {RentType} from '../models/rentType';
 import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
-import {RentTypeService} from '../services/rent-type.service';
-import {FacilityService} from '../services/facility.service';
-import {FacilityTypeService} from '../services/facility-type.service';
+import {RentTypeService} from '../rent-type.service';
+import {FacilityService} from '../facility.service';
+import {FacilityTypeService} from '../facility-type.service';
 
 @Component({
   selector: 'app-facility-create',
