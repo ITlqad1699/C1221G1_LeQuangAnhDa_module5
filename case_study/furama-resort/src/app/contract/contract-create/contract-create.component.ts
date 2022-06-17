@@ -33,8 +33,9 @@ export class ContractCreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.customers = this.customerService.getCustomer();
-    this.facilities = this.facilityService.getFacilities();
+
+    this.getAllFacility();
+    this.getAllCustomer();
   }
 
   get contractStartDate() {
@@ -100,12 +101,34 @@ export class ContractCreateComponent implements OnInit {
       const contract = this.contractForm.value;
       console.log(contract);
       this.contractService.createContractAPI(contract).subscribe(() => {
-        console.log("success");
+        console.log('success');
         this.router.navigateByUrl('/contract/contract-list');
         this.ngOnInit();
       }, error => {
         console.log(error);
       });
     }
+  }
+
+  getAllCustomer() {
+    this.customerService.getAllCustomerAPI()
+      .subscribe(data => {
+          this.customers = data;
+          console.log(this.customers);
+        }, error => {
+          console.log(error);
+        }
+      );
+  }
+
+  getAllFacility() {
+    this.facilityService.getAllFacilityAPI().subscribe(facilities => {
+        this.facilities = facilities;
+        console.log(this.facilities);
+      },
+      error => {
+        console.log(error);
+      });
+    console.log(this.facilities);
   }
 }

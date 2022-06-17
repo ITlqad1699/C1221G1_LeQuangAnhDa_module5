@@ -1,6 +1,5 @@
 export class CustomerType {
-  customerTypeId: number;
-  customerTypeName: string;
+  id: number;
+  name: string;
   active: number;
-
 }

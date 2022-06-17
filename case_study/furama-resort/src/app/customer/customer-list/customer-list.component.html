@@ -56,24 +56,24 @@
         <th scope="col">Gender</th>
         <th scope="col">Phone</th>
         <th scope="col">Email</th>
-        <th scope="col">Id Card</th>
+        <th scope="col">ID Card</th>
         <th scope="col">Class</th>
         <th scope="col">Address</th>
         <th scope="col"></th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let customer of customers|paginate : { itemsPerPage: 5, currentPage: p }; index as i">
+      <tr *ngFor="let customer of customers; index as i">
         <td>{{i + 1}}</td>
         <td>{{customer.customerCode}}</td>
-        <td>{{customer.customerName}}</td>
-        <td *ngIf="customer.customerGender==1">Nam</td>
-        <td *ngIf="customer.customerGender==0">Nữ</td>
-        <td>{{customer.customerPhone}}</td>
-        <td>{{customer.customerEmail}}</td>
-        <td>{{customer.customerIdCard}}</td>
-        <td>{{customer.customerType.customerTypeName}}</td>
-        <td>{{customer.customerAddress}}</td>
+        <td>{{customer.name}}</td>
+        <td *ngIf="customer.gender==1">Nam</td>
+        <td *ngIf="customer.gender==0">Nữ</td>
+        <td>{{customer.phone}}</td>
+        <td>{{customer.email}}</td>
+        <td>{{customer.idCard}}</td>
+        <td>{{customer.customerType.name}}</td>
+        <td>{{customer.address}}</td>
         <td>
           <div class="dropout d-flex align-items-center">
             <button class="more">
@@ -95,7 +95,7 @@
               <li class="nav-item">
                 <button class="btn btn-danger w-100" data-target="#deleteModal"
                         data-toggle="modal"
-                       (click)="sendNameProduct(customer.id, customer.customerName)">
+                       (click)="sendNameProduct(customer.id, customer.name)">
                   <i class='bx bx-trash'></i>
                 </button>
               </li>
@@ -106,9 +106,32 @@
       </tbody>
     </table>
     <hr/>
-    <div style="justify-content: space-around;display: flex;">
-      <pagination-controls (pageChange)="p = $event" class=" page-item"></pagination-controls>
-    </div>
+<!--    <div class="col-12" style="display: flex; justify-content: flex-end; padding-right: 20px">-->
+<!--      <a type="button" class="btn btn-outline-info" (click)="previousPage()">Previous</a>-->
+<!--      <span>{{pageNumber + 1}}</span>/<span>{{totalPages}}</span>-->
+<!--      <a type="button" class="btn btn-outline-info" (click)="nextPage()">Next</a>-->
+<!--    </div>-->
+    <nav class="blog-pagination d-flex justify-content-center py-3">
+      <ul class="pagination">
+        <li class="page-item px-1">
+          <a  class="page-link" (click)="previousPage()">Previous</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link">
+            <span>{{pageNumber + 1}}</span>
+            <span>/</span>
+            <span>{{totalPages}}</span>
+          </a>
+        </li>
+        <li class="page-item px-1">
+          <a  class="page-link" (click)="nextPage()">Next</a>
+        </li>
+      </ul>
+    </nav>
+<!--    <div style="justify-content: space-around;display: flex;">-->
+<!--      <pagination-controls (pageChange)="p = $event" class=" page-item"></pagination-controls>-->
+<!--    </div>-->
+<!--    |paginate : { itemsPerPage: 5, currentPage: p }-->
   </div>
 </section>
 <!-- ================ Explore section end ================= -->
@@ -130,7 +153,7 @@
       <div class="modal-footer">
         <div class="mx-auto row">
           <button #closeModal type="button" class="btn btn-secondary mx-1" data-dismiss="modal" >Cancel</button>
-          <button type="submit" class="btn btn-danger mx-1" id="id_delete" (click)="deleteCustomer(closeModal)">Delete</button>
+          <button type="button" class="btn btn-danger mx-1" id="id_delete" (click)="deleteCustomer(closeModal)">Delete</button>
         </div>
       </div>
     </div>

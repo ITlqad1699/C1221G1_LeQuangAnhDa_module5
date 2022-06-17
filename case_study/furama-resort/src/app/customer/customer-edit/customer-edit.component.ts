@@ -15,7 +15,6 @@ import {Subscription} from 'rxjs';
 export class CustomerEditComponent implements OnInit {
   customer: Customer;
   id: number;
-  customers: Customer[] = [];
   customerTypes: CustomerType[] = [];
   customerForm: FormGroup;
   private subcription: Subscription;
@@ -29,55 +28,50 @@ export class CustomerEditComponent implements OnInit {
       this.customerForm = new FormGroup({
         id: new FormControl('', [Validators.required]),
         customerCode: new FormControl('', [Validators.required, Validators.pattern('^$|^KH-[\\d]{4}$')]),
-        customerName: new FormControl('', [Validators.required, Validators.pattern('^$|^[A-Za-z ]+$')]),
-        customerBirthday: new FormControl('', [Validators.required, Validators.pattern('^$|^\\d{4}-\\d{2}-\\d{2}$')]),
-        customerGender: new FormControl('', Validators.required),
-        customerIdCard: new FormControl('', [Validators.required, Validators.pattern('^$|^\\d{9}$')]),
-        customerPhone: new FormControl('', [Validators.required, Validators.pattern('^(091|090|\\(\\+84\\)90|\\(\\+84\\)91)\\d{7}$')]),
-        customerEmail: new FormControl('', [Validators.required, Validators.email]),
-        customerAddress: new FormControl('', Validators.required),
+        name: new FormControl('', [Validators.required, Validators.pattern('^$|^[A-Za-z ]+$')]),
+        birthDay: new FormControl('', [Validators.required, Validators.pattern('^$|^\\d{4}-\\d{2}-\\d{2}$')]),
+        gender: new FormControl('', Validators.required),
+        idCard: new FormControl('', [Validators.required, Validators.pattern('^$|^\\d{9}$')]),
+        phone: new FormControl('', [Validators.required, Validators.pattern('^(091|090|\\(\\+84\\)90|\\(\\+84\\)91)\\d{7}$')]),
+        email: new FormControl('', [Validators.required, Validators.email]),
+        address: new FormControl('', Validators.required),
         customerType: new FormControl('', Validators.required),
-        active: new FormControl()
       });
     });
   }
   get active(){
     return this.customerForm.get('active');
   }
-  get customerId() {
-    return this.customerForm.get('customerId');
-  }
-
   get customerCode() {
     return this.customerForm.get('customerCode');
   }
 
-  get customerName() {
-    return this.customerForm.get('customerName');
+  get name() {
+    return this.customerForm.get('name');
   }
 
-  get customerBirthday() {
-    return this.customerForm.get('customerBirthday');
+  get birthDay() {
+    return this.customerForm.get('birthDay');
   }
 
-  get customerGender() {
-    return this.customerForm.get('customerGender');
+  get gender() {
+    return this.customerForm.get('gender');
   }
 
-  get customerIdCard() {
-    return this.customerForm.get('customerIdCard');
+  get idCard() {
+    return this.customerForm.get('idCard');
   }
 
-  get customerPhone() {
-    return this.customerForm.get('customerPhone');
+  get phone() {
+    return this.customerForm.get('phone');
   }
 
-  get customerEmail() {
-    return this.customerForm.get('customerEmail');
+  get email() {
+    return this.customerForm.get('email');
   }
 
-  get customerAddress() {
-    return this.customerForm.get('customerAddress');
+  get address() {
+    return this.customerForm.get('address');
   }
 
   get customerType() {
@@ -90,7 +84,7 @@ export class CustomerEditComponent implements OnInit {
   }
 
   findByid(id: number) {
-    return this.customerService.fingByIdAPI(id).subscribe(customer => {
+    return this.customerService.findById(id).subscribe(customer => {
       this.customer = customer;
         console.log(this.customer);
         this.customerForm.patchValue(this.customer);
@@ -108,9 +102,11 @@ export class CustomerEditComponent implements OnInit {
 
   updateCustomer(id: number){
     const customer = this.customerForm.value;
-    this.customerService.updateCustomerAPI(id, customer).subscribe(() => {
+    console.log(customer);
+    this.customerService.updateCustomer(id, customer).subscribe(() => {
       this.customerForm.reset();
       console.log('Add success!');
+      this.router.navigateByUrl('/customer/customer-list');
     },error => {
       console.log(error);
     });

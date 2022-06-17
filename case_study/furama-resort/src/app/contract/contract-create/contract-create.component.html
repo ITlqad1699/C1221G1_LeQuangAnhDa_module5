@@ -29,6 +29,7 @@
       <div class="col-8 mx-auto">
         <div class="mx-auto shadow-lg p-3 mb-5 bg-white rounded-lg">
           <input type="hidden" formControlName="id">
+          <input type="hidden" formControlName="contractTotalMoney">
           <div class="form-group row">
             <label for="startDate" class="col-sm-3 col-form-label">Start Date</label>
             <div class="col-sm-9">
@@ -69,7 +70,7 @@
                       id="customer"
                       name="customer" formControlName="customer">
                 <option value=""> choose customer</option>
-                <option [ngValue]="c" *ngFor="let c of customers;let first">{{c.customerName}}</option>
+                <option [ngValue]="c" *ngFor="let c of customers;">{{c.name}}</option>
               </select>
               <div
                 *ngIf="customer.invalid && (customer.dirty || customer.touched) || customer.errors?.empty">

@@ -1,6 +1,6 @@
-import {CustomerType} from './customerType';
+import {CustomerType} from '../customer/models/customerType';
 
-export class Customer {
+export class CustomerDto {
   id: number;
 
   customerCode: string;
@@ -20,6 +20,5 @@ export class Customer {
   address: string;
 
   customerType: CustomerType;
-
 
 }

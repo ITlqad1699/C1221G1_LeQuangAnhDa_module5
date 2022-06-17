@@ -5,6 +5,7 @@ import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {CustomerService} from '../customer.service';
 import {CustomerTypeService} from '../customer-type.service';
+import {CustomerDto} from '../../dto/customer-dto';
 
 @Component({
   selector: 'app-customer-create',
@@ -13,52 +14,52 @@ import {CustomerTypeService} from '../customer-type.service';
 })
 export class CustomerCreateComponent implements OnInit {
   customer: Customer;
+  customerDto: CustomerDto;
   customers: Customer[] = [];
   customerTypes: CustomerType[] = [];
   customerForm: FormGroup = new FormGroup({
     id: new FormControl(),
     customerCode: new FormControl('', [Validators.required, Validators.pattern('^$|^KH-[\\d]{4}$')]),
-    customerName: new FormControl('', [Validators.required, Validators.pattern('^$|^[A-Za-z ]+$')]),
-    customerBirthday: new FormControl('', [Validators.required, Validators.pattern('^$|^\\d{4}-\\d{2}-\\d{2}$')]),
-    customerGender: new FormControl('', Validators.required),
-    customerIdCard: new FormControl('', [Validators.required, Validators.pattern('^$|^\\d{9}$')]),
-    customerPhone: new FormControl('', [Validators.required, Validators.pattern('^(091|090|\\(\\+84\\)90|\\(\\+84\\)91)\\d{7}$')]),
-    customerEmail: new FormControl('', [Validators.required, Validators.email]),
-    customerAddress: new FormControl('', Validators.required),
+    name: new FormControl('', [Validators.required, Validators.pattern('^$|^[A-Za-z ]+$')]),
+    birthDay: new FormControl('', [Validators.required, Validators.pattern('^$|^\\d{4}-\\d{2}-\\d{2}$')]),
+    gender: new FormControl('', Validators.required),
+    idCard: new FormControl('', [Validators.required, Validators.pattern('^$|^\\d{9}$')]),
+    phone: new FormControl('', [Validators.required, Validators.pattern('^(091|090|\\(\\+84\\)90|\\(\\+84\\)91)\\d{7}$')]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    address: new FormControl('', Validators.required),
     customerType: new FormControl('', Validators.required),
-    active: new FormControl(1)
   });
 
   get customerCode() {
     return this.customerForm.get('customerCode');
   }
 
-  get customerName() {
-    return this.customerForm.get('customerName');
+  get name() {
+    return this.customerForm.get('name');
   }
 
-  get customerBirthday() {
-    return this.customerForm.get('customerBirthday');
+  get birthDay() {
+    return this.customerForm.get('birthDay');
   }
 
-  get customerGender() {
-    return this.customerForm.get('customerGender');
+  get gender() {
+    return this.customerForm.get('gender');
   }
 
-  get customerIdCard() {
-    return this.customerForm.get('customerIdCard');
+  get idCard() {
+    return this.customerForm.get('idCard');
   }
 
-  get customerPhone() {
-    return this.customerForm.get('customerPhone');
+  get phone() {
+    return this.customerForm.get('phone');
   }
 
-  get customerEmail() {
-    return this.customerForm.get('customerEmail');
+  get email() {
+    return this.customerForm.get('email');
   }
 
-  get customerAddress() {
-    return this.customerForm.get('customerAddress');
+  get address() {
+    return this.customerForm.get('address');
   }
 
   get customerType() {
@@ -75,29 +76,29 @@ export class CustomerCreateComponent implements OnInit {
       if (this.customerCode.value == '') {
         this.customerCode.setErrors({empty: 'Empty! Please input!'});
       }
-      if (this.customerName.value == '') {
-        this.customerName.setErrors({empty: 'Empty! Please input!'});
+      if (this.name.value == '') {
+        this.name.setErrors({empty: 'Empty! Please input!'});
       }
-      if (this.customerBirthday.value == '') {
-        this.customerBirthday.setErrors({empty: 'Empty! Please input!'});
+      if (this.birthDay.value == '') {
+        this.birthDay.setErrors({empty: 'Empty! Please input!'});
       }
-      if (this.customerGender.value == null) {
-        this.customerGender.setErrors({empty: 'Empty! Please input!'});
+      if (this.gender.value == null) {
+        this.gender.setErrors({empty: 'Empty! Please input!'});
       }
-      if (this.customerIdCard.value == '') {
-        this.customerIdCard.setErrors({empty: 'Empty! Please input!'});
+      if (this.idCard.value == '') {
+        this.idCard.setErrors({empty: 'Empty! Please input!'});
       }
-      if (this.customerPhone.value == '') {
-        this.customerPhone.setErrors({empty: 'Empty! Please input!'});
+      if (this.phone.value == '') {
+        this.phone.setErrors({empty: 'Empty! Please input!'});
       }
-      if (this.customerEmail.value == '') {
-        this.customerEmail.setErrors({empty: 'Empty! Please input!'});
+      if (this.email.value == '') {
+        this.email.setErrors({empty: 'Empty! Please input!'});
       }
-      if (this.customerGender.value == '') {
-        this.customerGender.setErrors({empty: 'Empty! Please input!'});
+      if (this.gender.value == '') {
+        this.gender.setErrors({empty: 'Empty! Please input!'});
       }
-      if (this.customerAddress.value == '') {
-        this.customerAddress.setErrors({empty: 'Empty! Please input!'});
+      if (this.address.value == '') {
+        this.address.setErrors({empty: 'Empty! Please input!'});
       }
       if (this.customerType.value == '') {
         this.customerType.setErrors({empty: 'Empty! Please input!'});
@@ -105,16 +106,15 @@ export class CustomerCreateComponent implements OnInit {
 
       this.router.navigateByUrl('/customer/customer-create');
     } else {
-      const customer = this.customerForm.value;
-      console.log(customer);
-      this.customerService.createCustomerAPI(customer).subscribe(() => {
+      this.customerDto = this.customerForm.value;
+      console.log(this.customerDto);
+      this.customerService.createCustomer(this.customerDto).subscribe(() => {
           this.customerForm.reset();
           this.router.navigateByUrl('/customer/customer-list');
           console.log('Add success!');
         },
         (error) => {
           if (!error.error.status) {
-            this.customerCode.setErrors({existed: error.error.errorMap.customerCode});
             this.router.navigateByUrl('/customer/customer-create');
           }
         });

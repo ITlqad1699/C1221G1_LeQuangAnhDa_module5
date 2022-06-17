@@ -60,7 +60,7 @@
       <tr *ngFor="let contract of contracts| paginate : { itemsPerPage: 5, currentPage: p }; index as i ">
         <td>{{i+1}}</td>
         <td>{{contract.services.serviceName}}</td>
-        <td>{{contract.customer.customerName}}</td>
+        <td>{{contract.customer.name}}</td>
         <td>{{contract.contractStartDate | date:"dd/MM/yyyy"}}</td>
         <td>{{contract.contractEndDate |  date:"dd/MM/yyyy"}}</td>
         <td>{{contract.contractDeposit}}</td>
@@ -85,7 +85,7 @@
               <li class="nav-item">
                 <button class="btn btn-danger w-100" data-target="#deleteModal"
                         data-toggle="modal"
-                        (click)="sendNameProduct(contract.id, contract.customer.customerName)">
+                        (click)="sendNameProduct(contract.id, contract.customer.name)">
                   <i class='bx bx-trash'></i>
                 </button>
               </li>

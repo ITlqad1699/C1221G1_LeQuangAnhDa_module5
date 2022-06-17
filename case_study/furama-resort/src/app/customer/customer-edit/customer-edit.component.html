@@ -23,16 +23,15 @@
     <form [formGroup]="customerForm" novalidate>
       <div class="col-8 mx-auto">
         <div class="mx-auto shadow-lg p-3 mb-5 bg-white rounded-lg">
-          <input name="customerId" hidden formControlName="customerId">
-          <input name="active" hidden formControlName="active">
+          <input name="customerId" hidden formControlName="id">
           <div class="form-group row">
             <label for="name" class="col-sm-3 col-form-label">Name</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="name" formControlName="customerName">
+              <input type="text" class="form-control" id="name" formControlName="name">
               <div
-                *ngIf="customerName.invalid && (customerName.dirty || customerName.touched) || customerName.errors?.empty">
-                <span *ngIf="customerName.errors.pattern" style="color: red">Wrong format, ex: Nguyen Thi Xuan Hong</span>
-                <span *ngIf="customerName.errors.required || customerName.errors.empty" style="color: red">Empty! Input please!</span>
+                *ngIf="name.invalid && (name.dirty || name.touched) || name.errors?.empty">
+                <span *ngIf="name.errors.pattern" style="color: red">Wrong format, ex: Nguyen Thi Xuan Hong</span>
+                <span *ngIf="name.errors.required || name.errors.empty" style="color: red">Empty! Input please!</span>
               </div>
             </div>
           </div>
@@ -51,53 +50,53 @@
           <div class="form-group row">
             <label for="birthday" class="col-sm-3 col-form-label">Birthday</label>
             <div class="col-sm-9">
-              <input type="date" class="form-control" id="birthday" formControlName="customerBirthday">
+              <input type="date" class="form-control" id="birthday" formControlName="birthDay">
               <div
-                *ngIf="customerBirthday.invalid && (customerBirthday.dirty || customerBirthday.touched) || customerBirthday.errors?.empty">
-                <span *ngIf="customerBirthday.errors.required || customerBirthday.errors.empty" style="color: red">Please choose a date!</span>
+                *ngIf="birthDay.invalid && (birthDay.dirty || birthDay.touched) || birthDay.errors?.empty">
+                <span *ngIf="birthDay.errors.required || birthDay.errors.empty" style="color: red">Please choose a date!</span>
               </div>
             </div>
           </div>
           <div class="form-group row">
             <label for="idCard" class="col-sm-3 col-form-label">Id card</label>
             <div class="col-sm-9">
-              <input type="number" class="form-control" id="idCard" formControlName="customerIdCard">
+              <input type="number" class="form-control" id="idCard" formControlName="idCard">
               <div
-                *ngIf="customerIdCard.invalid && (customerIdCard.dirty || customerIdCard.touched) || customerIdCard.errors?.empty">
-                <span *ngIf="customerIdCard.errors.pattern" style="color: red">Wrong format, ex: 123456789</span>
-                <span *ngIf="customerIdCard.errors.required || customerIdCard.errors.empty" style="color: red">Empty! Input please!</span>
+                *ngIf="idCard.invalid && (idCard.dirty || idCard.touched) || idCard.errors?.empty">
+                <span *ngIf="idCard.errors.pattern" style="color: red">Wrong format, ex: 123456789</span>
+                <span *ngIf="idCard.errors.required || idCard.errors.empty" style="color: red">Empty! Input please!</span>
               </div>
             </div>
           </div>
           <div class="form-group row">
             <label for="phone" class="col-sm-3 col-form-label">Phone</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="phone" formControlName="customerPhone">
+              <input type="text" class="form-control" id="phone" formControlName="phone">
               <div
-                *ngIf="customerPhone.invalid && (customerPhone.dirty || customerPhone.touched)">
-                <span *ngIf="customerPhone.errors.pattern" style="color: red">Wrong format, ex: 090xxxxxxx or 091xxxxxxx or (84)+90xxxxxxx or (84)+91xxxxxxx</span>
-                <span *ngIf="customerPhone.errors.required || customerPhone.errors.empty" style="color: red">Empty! Input please!</span>
+                *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+                <span *ngIf="phone.errors.pattern" style="color: red">Wrong format, ex: 090xxxxxxx or 091xxxxxxx or (84)+90xxxxxxx or (84)+91xxxxxxx</span>
+                <span *ngIf="phone.errors.required || phone.errors.empty" style="color: red">Empty! Input please!</span>
               </div>
             </div>
           </div>
           <div class="form-group row">
             <label for="email" class="col-sm-3 col-form-label">Email</label>
             <div class="col-sm-9">
-              <input type="email" class="form-control" id="email" formControlName="customerEmail">
+              <input type="email" class="form-control" id="email" formControlName="email">
               <div
-                *ngIf="customerEmail.invalid && (customerEmail.dirty || customerEmail.touched) || customerEmail.errors?.empty">
-                <span *ngIf="customerEmail.errors.email" style="color: red">Wrong format, ex: abc@gmail.com</span>
-                <span *ngIf="customerEmail.errors.required || customerEmail.errors.empty" style="color: red">Empty! Input please!</span>
+                *ngIf="email.invalid && (email.dirty || email.touched) || email.errors?.empty">
+                <span *ngIf="email.errors.email" style="color: red">Wrong format, ex: abc@gmail.com</span>
+                <span *ngIf="email.errors.required || email.errors.empty" style="color: red">Empty! Input please!</span>
               </div>
             </div>
           </div>
           <div class="form-group row">
             <label for="address" class="col-sm-3 col-form-label">Address</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="address" formControlName="customerAddress">
+              <input type="text" class="form-control" id="address" formControlName="address">
               <div
-                *ngIf="customerAddress.invalid && (customerAddress.dirty || customerAddress.touched) || customerAddress.errors?.empty">
-                <span *ngIf="customerAddress.errors.required || customerAddress.errors.empty" style="color: red">Empty! Input please!</span>
+                *ngIf="address.invalid && (address.dirty || address.touched) || address.errors?.empty">
+                <span *ngIf="address.errors.required || address.errors.empty" style="color: red">Empty! Input please!</span>
               </div>
             </div>
           </div>
@@ -107,14 +106,14 @@
               <select class="form-control"
                       id="gender"
                       name="gender"
-                      formControlName="customerGender">
+                      formControlName="gender">
                 <option [value]="'-1'">Other</option>
                 <option [value]="'0'">Female</option>
                 <option [value]="'1'">Male</option>
               </select>
               <div
-                *ngIf="customerGender.invalid && (customerGender.dirty || customerGender.touched) || customerGender.errors?.empty">
-                <span *ngIf="customerGender.errors.required || customerGender.errors.empty" style="color: red">Please choose gender!!</span>
+                *ngIf="gender.invalid && (gender.dirty || gender.touched) || gender.errors?.empty">
+                <span *ngIf="gender.errors.required || gender.errors.empty" style="color: red">Please choose gender!!</span>
               </div>
             </div>
           </div>
@@ -125,7 +124,7 @@
                       class="form-control"
                       name="customerType"
                       formControlName="customerType" [compareWith]="compareFn">
-                <option [ngValue]="item" *ngFor="let item of customerTypes" >{{item.customerTypeName}}</option>
+                <option [ngValue]="item" *ngFor="let item of customerTypes" >{{item.name}}</option>
               </select>
               <div
                 *ngIf="customerType.invalid && (customerType.dirty || customerType.touched) || customerType.errors?.empty">
@@ -139,13 +138,7 @@
             </div>
             <div class="mx-2">
               <a class="button button--active home-banner-btn"
-                 (click)="updateCustomer(id)" [routerLink]="['/customer/customer-list']" >Update</a>
-              <!--              <button type="submit" class="btn btn-primary btn-active"-->
-              <!--                      id="btn-create-villa">-->
-              <!--                &lt;!&ndash;                    [disabled]="!customerCreateForm.valid">&ndash;&gt;-->
-              <!--                <i class="fa fa-paper-plane"></i>-->
-              <!--                Create-->
-              <!--              </button>-->
+                 (click)="updateCustomer(id)"  >Update</a>
             </div>
           </div>
         </div>
