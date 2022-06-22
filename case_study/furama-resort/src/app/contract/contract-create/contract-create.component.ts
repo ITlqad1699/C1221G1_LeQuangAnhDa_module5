@@ -71,8 +71,8 @@ export class ContractCreateComponent implements OnInit {
       let startDateParse = new Date(this.contractStartDate.value);
       let endDateParse = new Date(this.contractEndDate.value);
       if (endDateParse < startDateParse) {
-        this.contractStartDate.setErrors({dateErrors: 'End date must be after start date! Please choose again!'});
-        this.contractEndDate.setErrors({dateErrors: 'End date must be after start date! Please choose again!'});
+        this.contractStartDate.setErrors({timeErrors: 'End date must be after start date! Please choose again!'});
+        this.contractEndDate.setErrors({timeErrors: 'End date must be after start date! Please choose again!'});
       }
     }
     if (this.contractDeposit.value != '') {

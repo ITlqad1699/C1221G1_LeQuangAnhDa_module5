@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import {Customer} from '../models/customer';
 import {Router} from '@angular/router';
 import {CustomerService} from '../customer.service';
@@ -19,8 +19,10 @@ export class CustomerListComponent implements OnInit {
   pageNumber: number;
   idDelete = 0;
   nameDelete = '';
-  e;
   flag = false;
+  @ViewChild('keySearch1') keySearch1:ElementRef;
+  @ViewChild('keySearch2') keySearch2:ElementRef;
+  @ViewChild('keySearch3') keySearch3:ElementRef;
 
   constructor(private router: Router, private customerService: CustomerService) {
   }
@@ -31,10 +33,19 @@ export class CustomerListComponent implements OnInit {
     new createThreeDots();
   }
 
+  search() {
+    console.log(this.keySearch1.nativeElement.value)
+    console.log(this.keySearch2.nativeElement.value)
+    console.log(this.keySearch3.nativeElement.value)
+    this.customerService.search(this.keySearch1.nativeElement.value,
+      this.keySearch2.nativeElement.value,
+      this.keySearch3.nativeElement.value).subscribe(customers => this.customers = customers,
+      () => {});
+  }
   getCustomers() {
     this.customerService.getCustomers(this.pageNumber).subscribe(customers => {
       console.log(customers);
-      this.flag = false;
+      // this.flag = false;
       //@ts-ignore
       this.customers = customers.content;
       // @ts-ignore

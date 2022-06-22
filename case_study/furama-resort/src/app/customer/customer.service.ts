@@ -38,6 +38,11 @@ export class CustomerService {
   }
 
   //TODO phần này dành cho json-server
+
+  public search(value: any, value2: any, value3: any):Observable<Customer[]> {
+    return this.httpClient.get<Customer[]>(`${API_URL}/customer?name_like=${value}&phone_like=${value2}&customerType.type_like=${value3}`)
+  }
+
   public createCustomerAPI(customer: Customer): Observable<void> {
     return this.httpClient.post<void>(API_URL + '/customer', customer);
   }
@@ -54,9 +59,9 @@ export class CustomerService {
     return this.httpClient.put<void>(`${API_URL}/customer/${id}`, customer);
   }
 
-  // public deleteCustomerAPI(id: number): Observable<Customer> {
-  //   return this.httpClient.delete<Customer>(`${API_URL}/customer/${id}`);
-  // }
+  public deleteCustomerAPI(id: number): Observable<Customer> {
+    return this.httpClient.delete<Customer>(`${API_URL}/customer/${id}`);
+  }
 
   // private customers: Customer[] = [
   //   {

@@ -1,0 +1,122 @@
+{
+  "productType": [
+    {
+      "id": 1,
+      "name": "điện thoại"
+    },
+    {
+      "id": 2,
+      "name": "máy tính"
+    },
+    {
+      "id": 3,
+      "name": "laptop"
+    }
+  ],
+  "product": [
+    {
+      "id": 1,
+      "name": "sangsum A8",
+      "price": 3000,
+      "status": "yes",
+      "producType":
+      {
+        "id": 1,
+        "name": "điện thoại"
+      }
+    },
+    {
+      "id": 2,
+      "name": "sangsum A8",
+      "price": 3000,
+      "status": "yes",
+      "producType":
+      {
+        "id": 1,
+        "name": "điện thoại"
+      }
+    },
+    {
+      "id": 3,
+      "name": "iphone A8",
+      "price": 3000,
+      "status": "yes",
+      "producType":
+      {
+        "id": 1,
+        "name": "điện thoại"
+      }
+    }
+  ],
+  "order": [
+    {
+      "id": 200,
+      "dateBuy": "2020-11-01",
+      "quantily": 10,
+      "product":
+      {
+        "id": 3,
+        "name": "iphone A8",
+        "price": 3000,
+        "status": "yes",
+        "producType":
+        {
+          "id": 1,
+          "name": "điện thoại"
+        }
+      }
+    },
+    {
+      "id": 201,
+      "dateBuy": "2020-11-01",
+      "quantily": 10,
+      "product":
+      {
+        "id": 1,
+        "name": "sangsum A8",
+        "price": 3000,
+        "status": "yes",
+        "producType":
+        {
+          "id": 1,
+          "name": "điện thoại"
+        }
+      }
+    },
+    {
+      "id": 202,
+      "dateBuy": "2020-11-01",
+      "quantily": 10,
+      "product":
+      {
+        "id": 3,
+        "name": "iphone A8",
+        "price": 3000,
+        "status": "yes",
+        "producType":
+        {
+          "id": 1,
+          "name": "điện thoại"
+        }
+      }
+    },
+    {
+      "id": 203,
+      "dateBuy": "2020-11-01",
+      "quantily": 10,
+      "product":
+      {
+        "id": 1,
+        "name": "sangsum A8",
+        "price": 3000,
+        "status": "yes",
+        "producType":
+        {
+          "id": 1,
+          "name": "điện thoại"
+        }
+      }
+    }
+  ]
+}
+

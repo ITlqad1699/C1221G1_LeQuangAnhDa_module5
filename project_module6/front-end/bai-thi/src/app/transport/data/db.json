@@ -1,0 +1,106 @@
+{
+  "transportations": [
+    {
+      "id": 1,
+      "numberOfTransport": 1231,
+      "typeOfTransport": "giường nằm",
+      "name": "Mai Linh",
+      "pointStart": {
+        "id": 1,
+        "nameCity": "Đà Nẵng"
+      },
+      "pointEnd": {
+        "id": 2,
+        "nameCity": "Huế"
+      },
+      "phone": "0935123312",
+      "email": "mailinh@gmail.com",
+      "timeStart": "13:20",
+      "timeEnd": "23:50",
+      "active":  1
+    },
+    {
+      "id": 2,
+      "numberOfTransport": 1232,
+      "typeOfTransport": "giường nằm",
+      "name": "Mai Linh",
+      "pointStart": {
+        "id": 1,
+        "nameCity": "Đà Nẵng"
+      },
+      "pointEnd": {
+        "id": 2,
+        "nameCity": "Huế"
+      },
+      "phone": "0935123312",
+      "email": "mailinh@gmail.com",
+      "timeStart": "13:20",
+      "timeEnd": "23:50",
+      "active":  1
+    },
+    {
+      "id": 3,
+      "numberOfTransport": 1233,
+      "typeOfTransport": "giường nằm",
+      "name": "Mai Linh",
+      "pointStart": {
+        "id": 1,
+        "nameCity": "Đà Nẵng"
+      },
+      "pointEnd": {
+        "id": 2,
+        "nameCity": "Huế"
+      },
+      "phone": "0935123312",
+      "email": "mailinh@gmail.com",
+      "timeStart": "13:20",
+      "timeEnd": "23:50",
+      "active":  1
+    },
+    {
+      "id": 4,
+      "numberOfTransport": 1234,
+      "typeOfTransport": "giường nằm",
+      "name": "Mai Linh",
+      "pointStart": {
+        "id": 1,
+        "nameCity": "Đà Nẵng"
+      },
+      "pointEnd": {
+        "id": 2,
+        "nameCity": "Huế"
+      },
+      "phone": "0935123312",
+      "email": "mailinh@gmail.com",
+      "timeStart": "13:20",
+      "timeEnd": "23:50",
+      "active":  1
+    }
+  ],
+  "cities": [
+    {
+      "id": 1,
+      "nameCity": "Đà Nẵng"
+    },
+    {
+      "id": 2,
+      "nameCity": "Huế"
+    },
+    {
+      "id": 3,
+      "nameCity": "Quảng Trị"
+    },
+    {
+      "id": 4,
+      "nameCity": "Hà Nội"
+    },
+    {
+      "id": 5,
+      "nameCity": "Tp HCM"
+    },
+    {
+      "id": 6,
+      "nameCity": "Đà Lạt"
+    }
+  ]
+}

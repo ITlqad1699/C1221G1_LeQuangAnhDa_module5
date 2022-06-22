@@ -1,5 +1,6 @@
 1	Trình bày được ý nghĩa và khái niệm Observer
-2	Trình bày được ý nghĩa và khái niệm Observable
+2	Trình bày được ý nghĩa và khái niệm Observable: angular sử dụng observable để xử lý bất đồng bộ, tương tự callback, promise, await/async trong javass
+	
 3	Phân biệt sự khác nhau giữa var, let, const
 4	File angular.json và package.json sử dụng để làm gì?
 5	Kể tên các directive được hỗ trợ trong angular

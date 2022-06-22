@@ -25,25 +25,18 @@
       <div class="row">
         <div class="col">
           <input class="form-control mr-sm-2" type="search" placeholder="name" aria-label="Search"
-                 name="name">
+                 name="keySearch1" id="keySearch1" #keySearch1>
         </div>
         <div class="col">
           <input class="form-control mr-sm-2" type="search" placeholder="Phone" aria-label="Search"
-                 name="phone">
+                 name="keySearch2" id="keySearch2" #keySearch2>
         </div>
         <div class="col">
-          <select name="customerType"
-                  class="form-control">
-            <option value="-1">Select customerType</option>
-            <option value="1"> Diamond</option>
-            <option value="2"> Platinum</option>
-            <option value="3"> Gold</option>
-            <option value="4"> Silver</option>
-            <option value="5"> Member</option>
-          </select>
+          <input class="form-control mr-sm-2" type="search" placeholder="Phone" aria-label="Search"
+                 name="keySearch2" id="keySearch3" #keySearch3>
         </div>
         <div class="col">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="search()">Search</button>
         </div>
       </div>
     </div>

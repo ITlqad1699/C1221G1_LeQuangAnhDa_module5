@@ -1,0 +1,328 @@
+1	TRÌNH BÀY ĐƯỢC Ý NGHĨA VÀ KHÁI NIỆM OBSERVER:
+
+	- là cái mà đăng kí subcribe với observable dùng để callback (next, error, complete) 
+	cho các sự kiện mà giá trị được gửi đi của observable. 
+	
+2	TRÌNH BÀY ĐƯỢC Ý NGHĨA VÀ KHÁI NIỆM OBSERVABLE: 
+
+	- angular sử dụng observable để xử lý abất đồng bộ, tương tự callback, promise, 
+	await/async trong javascript, được phát triển trong angular bởi thư viện Rxjs
+	
+	- observable đối tượng là đại diện cho 1 stream of values 
+	(có thể là dòng xuyên suốt các giá trị, dữ liệu, sự kiện,...)  
+	
+3	PHÂN BIỆT SỰ KHÁC NHAU GIỮA VAR, LET, CONST:
+	
+	VAR: 
+	- range: global scope or function scope.
+	- cơ chế hoisting: dù khai báo ở đâu thì biến luôn được đem lên đầu trước khi code chạy, 
+	để tránh trình biên dịch bị lỗi khi chạy code, nếu biến chưa gán giá trị thì => undefind: 
+	
+	// Gán nhưng chưa khai báo biến
+		domain = 'freetuts.net';
+ 
+	// Kêt quả: Domain là freetuts.net
+		document.write("Domain là: " + domain);
+ 
+	// Khai báo
+		var domain = 'techtuts.net';
+ 
+	// kêt quả: Domain là freetuts.net
+	document.write("<br/> Domain là: " + domain);
+	
+	- có thể gán lại hoặc khai báo lại;
+	
+	LET:
+	- range: block scope, nằm ngoài scope thì ko thể sự dụng được
+	- có thể gán lại giá trị nhưng ko thể khai báo lại: nếu cố tình làm vậy 
+		=> // error: Identifier 'greeting' has already been declared
+	- cũng có cơ chế hoisting nhưng không được đặt giá trị khi chỉ khai báo mà ko gán 
+		=> reference error
+	
+	CONST: 
+	- tương tự LET cũng có block scope và hoisting
+	- nếu là biến nguyên thủy thì ko thể cập nhật hoặc thay đổi giá trị: primitive varriables
+	- nếu là kiểu reference(object, function, array) ta có thể tái cập nhật giá trị của thuộc 
+		tính chứ ko được cập nhật giá trị của biến
+	
+	
+4	FILE ANGULAR.JSON VÀ PACKAGE.JSON SỬ DỤNG ĐỂ LÀM GÌ?
+	JSON: javascript object national.
+	
+	ANGULAR.JSON: is related to the configuration of your file. it gives you a workspace and libraries.
+
+	PACKAGE.JSON: 	- Chỉ rõ phiên bản của project và mô tả project (tên project, tác giả, bản quyền…)
+					- Liệt kê các packages mà project phụ thuộc (các thư viện mà project sử dụng)
+					- Dễ dàng chia sẻ project giữa các developers, giúp project có thể được sử dụng lại như một thư viện.
+	
+	metadata: đoạn mã khai bó metadata trong @Component, muốn angular hiểu đoạn code typescript dành
+	cho angular thì cần định nghĩa metadata
+		@Component({
+    moduleId: module.id,
+    selector: 'hero-list',
+    templateUrl: 'hero-list.component.html',
+    providers: [ HeroService ]
+})
+export class HeroListComponent implements OnInit {
+    /* . . . */
+}
+
+5	Kể tên các directive được hỗ trợ trong angular
+
+	Directive: sử dụng directive để thao tác cập nhật, thêm, sửa, xóa các element trên trang web(html)
+	định nghĩa khác: các lớp cung cấp thêm cho các element trong angular app, nhằm mục đích tăng thêm 
+	sức mạnh cho trang web chúng ta(html)
+	
+	3 loại directive:
+	- component directive: là các directive đại diện cho component
+	
+	- structural directive: sử dụng để thay đổi layout trang web (element, DOM, directive khác) bằng 
+	cách thao tác thêm hoặc xóa DOM element
+	*ngFor, *ngSwitch, *ngIf ,ngSwitchCase,...
+	
+	- attribute directive: sử dụng để thay đổi hiển thị or hành vi của 1 DOM element( change appearance
+	or behavior of a DOM element)
+	*ngModel, *ngStyle, *ngClass,...
+	
+	- custom directive: nó thuộc 1 trong 2 directive attribute or structural
+6	TRÌNH BÀY ĐƯỢC Ý NGHĨA VÀ KHÁI NIỆM SUBSCRIBE:
+
+	- ta sử dụng subscribe để theo dõi sự thay đổi của luồng dữ liệu(stream of values) hoặc nhận về kết 
+	quả của một sự kiện nào đó,
+	hay nói cách khác nó theo dõi đối tượng observer và trả về 3 sự kiện chính như dưới đây: 
+	- có 3 sự kiện đối với subscribe:
+		+ next: thành công
+		+ error: thất bại
+		+ complete: thành công hay thất bị cũng sẽ thực thi
+ 
+7	Trình bày khái niệm Single page application:
+
+	- single page application là ứng dụng web giúp nâng cao trãi nghiệm người dùng bằng html 5 và ajax.
+	- trang web chỉ load toàn bộ lên lần đầu tiên, sau đó nếu người dùng muốn truy cập 1 phần nào đó thì 
+	ajax request  được gửi đi để get phần dữ liệu mà client muốn truy xuất 
+		=> nâng cao trãi nghiệm, truy xuất nhanh, tiết kiệm băng thông
+
+8	Trình bày về Data binding trong component
+
+	- giống với cơ chế data binding trong spring, thì databinding trong angular dùng để đồng bộ dữ liệu 
+	của tầng templates và tầng class component
+	- có 2 loại binding: 
+		+ oneway: binding 1 chiều gồm : - property binding: thuộc tính từ class componentlên templates []
+										- interpolation binding: hiển thị từ class componentlên templates {{}}
+										- vevent binding: sự kiện: (click), (change),.. từ templates xuống class component ()
+	
+	
+9	Trình bày sự khác nhau giữa navigateByUrl và navigate? 
+
+	navigateByUrl, navigate đều là hai phướng thức chuyển trang thuộc class Router 
+	navigateByUrl: chuyển trang với đường dẫn tĩnh nếu muốn kèm biến thì phải cộng chuỗi
+	navigate: chuyển trang kèm đường dẫn động kèm tham số sau dấu phẩy: navigate = (['links',params])
+	
+10	TypeScript là gì?
+	
+	là một ngôn ngữ lập trình mã nguồn mở và là superset của js (cha).
+	
+	
+11	Tại sao nên sử dụng Typescript, Ưu điểm của Typescript
+
+	- dễ phát triển dự án lớn: hỗ trợ hướng đối tượng tốt hơn js, kiểu DL rõ ràng
+	- nhiều framework: angularjs, reactjs
+	- luôn đảm bảo rằng phiên bản js mới nhất ES6 
+	- mã nguồn mở: không tốn phí, cộng đồng hỗ trợ lớn(do microsoft đảm bảo)
+
+12	Làm thế nào để lấy được dữ liệu từ component cha
+
+	b1: sử dụng @Input đặt ở component con cho biến cần nhận data.
+	b2: dùng directive [tên biến] = "value"  trong selector của component con.
+
+
+13	Làm thế nào để lấy được dữ liệu từ component con
+
+
+	có nhiều cách: dùng @Output, @viewchild , event emiter, biến cục bộ
+	
+	
+14	Sự khác biệt giữa RouterModule.forChild và RouterModule.forRoot là gì?
+	
+	forChild cho Module con; còn thằng kia cho module cha
+
+15	Tại sao nên sử dụng Angular (điểm mạnh)?
+
+	- angular là 1 js fw dùng để phát triển tầng front end; thích hợp phát triển 
+		các dự án lớn vì nó rõ ràng và chi tiết(thể hiện rõ tất cả các file)
+	- viết bằng Ts hỗ trợ hướng đối tượng 
+	- open source code, cộng đồng hỗ trợ lớn
+	- angular 1: MVC
+	- angular 2: MVVM (Model - View - ViewModel): các tầng bên dưới sẽ không biết 
+		gì về tầng bên trên mà chỉ thông qua databinding, viewmodel tương tự 
+		controller Nó chứa các mã lệnh cần thiết để thực hiện data binding, command. 
+
+16	Nhược điểm của Angular là gì?
+
+	- vì phục vụ những dự án lớn nên dung lượng cao, phức tạp; đối với các 
+		loại máy yếu thì tốn khá nhiều thời gian để tạo cũng như loading project.
+	- không an toàn: vì bản chất là FE nên dễ bị xâm nhập và chỉnh sửa 
+		vì vậy cần xây dựng tầng BE đảm bảo truy xuất tối ưu.
+	- một số trình duyệt chặn Javascript nên ta ko thể sử dụng trên trình duyệt đó.
+	
+17	Angular Cli là gì? Làm sao để sử dụng nó ?
+
+	- Angular CLi là màn hành(giao diện) command để thực hiện cách lệnh command line: khởi tạo, khởi chạy, testing, debug,...
+	
+	- cài đặt nodejs, cài đặt angular thì mới xài được chứ kaka 
+			
+18	Directive trong angular là gì ?
+
+	- directive trong angular là cung cấp thêm tính năng cho các element trên trang web, sử dụng directive 
+	để thao tác cập nhật thêm sửa xóa html nhằm tăng thêm sức mạnh cho html 
+	
+19	Trình bày được khái niệm template trong angular
+ 
+    - là phần giao diện html hiển thị component cho người dùng.
+	
+20	Giải thích kiến trúc của Angular
+
+	- kiến trúc angular: 1 project angular được chia làm nhiều module 
+	=> mỗi module đảm nhận một nhiệm vụ nhất định. 
+	- luôn luôn có 1 module gốc là root module hay là app module.
+	- component là thành phần quan trọng nhất của angular = class component + metadata + template
+	   (class component liên lạc với template thông qua metadata nhờ cơ chế databinding)
+	- các directive là thành phần mở rộng dùng để tăng sức mạnh của html
+	- ngoài ra nếu muốn xử lý nghiệp vụ và validate dữ liệu thì ta sử dụng service gói gọn trong injector 
+	muốn sử dụng thì ta phải tim DI vào trong class.
+	
+	
+21	Hãy mô tả khái niệm Databinding One Way & two way phân biệt sự khác nhau?
+		
+	one-way: chỉ binding 1 chiều từ template xuống class component hoặc ngược lại
+			interpolation, property, event
+	two-way: binding dữ liệu cả 2 chiều nhờ vào ngModel		
+	
+22	ngModel là gì?
+
+	- là 1 directive dùng dể binding dữ liệu 2 chiều giữa template và component 
+	thường khả dụng với form.
+	
+23	Component là gì ? các thành phần của component
+
+	- là thành phần quan trọng nhất cấu tạo nên angular, mỗi component đảm bảo 1 nhiệm vụ nhất định
+	- component =  = class component + metadata + template
+
+24	Có thể chuyển mã TypeScript thành mã Javascript không, bằng cách nào?
+
+	có thể: bằng cách sử dụng lệnh tsc tên file.ts
+	
+	
+25	Mô tả vòng đời component?
+
+	vòng đời của component: 
+	- ngOnchanges: gọi khi có sự binding dữ liệu vào component bằng @Input.
+	- ngOnInit: gọi 1 lần như duy nhất khi khởi tạo component, có thể gọi lại trong phương thức.
+	- ngDocheck: gọi khi có sự thay đổi dữ liệu trong component.
+	- ngAfterContentInit: gọi ngay sau khi component tạo thành công. 
+	- ngAfterContentChecked:
+	- ngAfterViewInit: chỉ gọi 1 lần
+	- ngAfterViewChecked: sau khi component được ktra xong
+	- ngOnDestroy: trước khi component or directive bị phá hủy
+	
+	
+26	Pipe là gì?
+
+	- cơ chế định dạng dữ liệu hiển thị trên HTML
+	- các loại pipe thường dùng: 
+		- current pipe: tiền tệ
+		- Date Pipes : định dạng ngày tháng
+		- UpperCasePipe , LowerCasePipe;
+		- DecimalPipe , NumberPipe: 
+		- PercentePipe
+	
+27	Phân biệt sự khác nhau giữa Promise và Observable
+	
+	observable:  
+	- khi đăng kí nó sẽ không thực thi ngay.
+	- chứa nhiều giá trị
+	- hủy và tái đăng kí request
+	- có thể xử lý kết quả trước khi trả về thông qua pipe, subscribe
+	
+	promise: 
+	- khi đăng kí nó sẽ thực thi ngay.
+	- đơn giá trị
+	- không thể hủy và cũng ko thể tái đăng kí
+	- kết quả trả về sẽ ko được xử lý
+	
+28	Biên dịch AOT là gì? Những lợi thế của AOT?
+	- AOT: ahead-of-time: biên dịch trước, thông qua các dòng lệnh nên nhanh hơn(từ angular 2)
+	- JIT: just-in-time: biên dịch ngay lúc runetime (angular 1)
+
+29	Trình bày khái niệm Front-end & backend?
+
+30	Làm sao để cài đặt TypeScript?
+
+	- cài đặt node js
+	- mở command line terminal lên chạy lệnh: npm init typescript-project
+	- chạy: tsc --watch
+
+31	Để khởi tạo một dự án angular sử dụng câu lệnh nào
+
+		ng new tên dự án
+		
+32	Để chạy một dự án angular sử dụng câu lệnh nào
+
+		ng serve, ng s
+		
+33	Kể tên các kiểu dữ liệu trong Typescript
+
+		number; string; null; undefind; symbol; boolean và enum; turple
+		
+34	Kể tên các vòng lặp được typescript hỗ trợ
+
+		for index; for of; for in
+		
+35	ngFor là gì? Cách sử dụng
+
+		structural directive dùng để lặp
+		
+36	ngIf là gì? Cách sử dụng
+
+		structural directive dùng để xét điều kiện
+		
+37	Các cách tạo form trong Angular
+		có 2 cái: 
+		template-driven-form
+			- tạo biên template rồi mới binding qua ts
+			- formModule
+			- async
+		reactive form:
+			- tạo biên component rồi binding qua ts 
+			- reactive formModule
+			- sync
+			
+38	router trong angular dùng để làm gì?
+
+		- dùng để định vị component nào hiển thị trên tầng view(trang index.html). 
+		- 
+39	Cách để lấy tham số trên URL trong angular
+		
+        - 2 cách: 
+					
+				- ActivatedRoute:            
+				private route: ActivatedRoute) {
+				this.route.paramMap.subscribe(
+				(paramMap: ParamMap) => {
+				this.id = +paramMap.get('id');
+											}
+				- snapshot:this.route.snapshot.params['id']
+40	làm sao để kiểm tra người dùng có quyền truy cập vào 1 route?
+
+		- CanActivate kiểm tra xem có được di chuyển tới target route không.
+		
+		- CanActivateChild kiểm tra xem có di chuyển tới target child
+			route không.
+		
+41	lazy-loading là gì?
+
+		- chỉ loading những đối tượng cần thiết, trì hoãn lại việc load những đối tượng không cần thiết 
+		
+		ưu điểm: Lazy loading là một trong những kỹ thuật tối ưu hiệu suất website hiệu quả nhất 
+		đang được sử dụng phổ biến hiện nay. Chắc chắn bạn sẽ không bao giờ phải mất 
+		chi phí băng thông cho những gì mà bạn không tải xuống, không xem và không nhìn thấy.

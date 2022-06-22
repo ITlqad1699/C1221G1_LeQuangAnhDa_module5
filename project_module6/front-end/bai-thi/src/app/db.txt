@@ -1,0 +1,65 @@
+{
+  "transportations": [
+    {
+      "id": 1,
+      "numberOftransport": 1231,
+      "typeOfTransport": "giường nằm",
+      "name": "Mai Linh",
+      "pointStart": "Đà Nẵng",
+      "pointEnd": "Quảng Trị",
+      "phone": "0935123312",
+      "email": "mailinh@gmail.com",
+      "timeStart": "13:20",
+      "timeEnd": "15:00"
+    },
+    {
+      "id": 2,
+      "numberOftransport": 1232,
+      "typeOfTransport": "ghế ngồi",
+      "name": "Hoàng Long",
+      "pointStart": "Đà Nẵng",
+      "pointEnd": "Huế",
+      "phone": "0935123123",
+      "email": "hoanglong@gmail.com",
+      "timeStart": "13:20",
+      "timeEnd": "15:00"
+    },
+    {
+      "id": 3,
+      "numberOftransport": 1233,
+      "typeOfTransport": "giường nằm",
+      "name": "Phương Trang",
+      "pointStart": "Đà Nẵng",
+      "pointEnd": "Hà Nội",
+      "phone": "0935122377",
+      "email": "futa@gmail.com",
+      "timeStart": "13:20",
+      "timeEnd": "15:00"
+    },
+    {
+      "id": 4,
+      "numberOftransport": 1234,
+      "typeOfTransport": "giường nằm",
+      "name": "Mai Linh",
+      "pointStart": "Đà Nẵng",
+      "pointEnd": "Quảng Trị",
+      "phone": "0935123312",
+      "email": "mailinh@gmail.com",
+      "timeStart": "15:20",
+      "timeEnd": "17:00"
+    },
+    {
+      "id": 5,
+      "numberOftransport": 1235,
+      "typeOfTransport": "giường nằm",
+      "name": "Mai Linh",
+      "pointStart": "Đà Nẵng",
+      "pointEnd": "Quảng Trị",
+      "phone": "0935123312",
+      "email": "mailinh@gmail.com",
+      "timeStart": "18:20",
+      "timeEnd": "20:00"
+    }
+  ]
+}
+
